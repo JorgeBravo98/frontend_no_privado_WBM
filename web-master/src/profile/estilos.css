@@ -1,0 +1,170 @@
+/* General */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Contenedor principal */
+.registro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right bottom, #4f46e5, #9333ea);
+  padding: 20px;
+}
+
+/* Tarjeta principal */
+.registro-card {
+  display: flex;
+  width: 900px;
+  max-width: 100%;
+  background-color: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Lado izquierdo */
+.registro-izquierda {
+  background-color: #eee6fd;
+  flex: 1;
+  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #5b21b6;
+}
+
+.registro-subtitulo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.registro-titulo {
+  font-size: 32px;
+  font-weight: 900;
+  color: #4c1d95;
+}
+
+.registro-descripcion {
+  margin-top: 30px;
+  font-size: 16px;
+  color: #444;
+}
+
+.registro-imagen {
+  width: 180px;
+  align-self: center;
+  margin-top: 40px;
+}
+
+/* Lado derecho */
+.registro-derecha {
+  flex: 1;
+  padding: 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.registro-formulario-titulo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.registro-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.registro-campo label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.registro-campo input {
+  padding: 10px 15px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.registro-campo input:focus {
+  border-color: #9333ea;
+}
+
+/* Botón */
+.registro-formulario button {
+  background-color: #7c3aed;
+  color: #fff;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.registro-formulario button:hover {
+  background-color: #6d28d9;
+}
+
+/* Link de login */
+.registro-login-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+.registro-login-link a {
+  color: #7c3aed;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.registro-login-link a:hover {
+  text-decoration: underline;
+}
+
+.registro-avatares {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.registro-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s, border 0.2s;
+}
+
+.registro-avatar:hover {
+  transform: scale(1.1);
+}
+
+.registro-avatar.seleccionado {
+  border: 2px solid #9333ea;
+  box-shadow: 0 0 5px #9333ea;
+}

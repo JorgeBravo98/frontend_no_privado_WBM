@@ -3,6 +3,7 @@ import Instructions from '../game/instructions'
 import UserWelcome from '../profile/UserWelcome'
 import App from './App'
 import Board from '../game/Board'
+import Registro from '../profile/Registro'
 
 function Routing() {
     return (
@@ -12,7 +13,8 @@ function Routing() {
                 <Route path={'/instructions'} element={<Instructions/>}/>
                 <Route path={'/welcome'} element={<UserWelcome/>}/>  
                 <Route path={'/'} element={<App/>}/>     
-                <Route path={'board'} element={<Board/>}/>     
+                <Route path={'board'} element={<Board/>}/>  
+                <Route path={'/registro'} element={<Registro/>}/>   
             </Routes>
         </BrowserRouter>
         </>
