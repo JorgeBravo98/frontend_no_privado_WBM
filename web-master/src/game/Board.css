@@ -1,0 +1,44 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+}
+
+.board h1 {
+  font-size: 2rem;
+  color: #0047AB;     
+  margin-bottom: 5px;
+}
+
+.board .subtitle {
+  font-size: 1rem;
+  color: #0066CC;      
+  margin-bottom: 20px;
+}
+
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  width: 500px;            
+  height: 500px;           
+  border: 3px solid #0047AB; 
+  background-color: #ffffff; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.square {
+  border: 1px solid #cccccc; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #333333;
+  user-select: none;
+}
+
+.square:hover {
+  background-color: #f9f9f9;
+}

@@ -30,6 +30,7 @@ function App() {
       </p>
       <a href='/welcome'>Ir a User Welcome </a>
       <a href='/instructions'>Ir a Instructions </a>
+      <a href='/board'>Demo tablero (hay q hacer logica para que este boton esté cdo se inicie sesion etc) </a>
     </>
   )
 }
