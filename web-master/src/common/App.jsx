@@ -1,38 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './../assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+    <div className="landing-container">
+      <header>
+        <h1>100 Pasos por Chile</h1>
+        <p className="subtitle">
+          Explora Chile casilla a casilla en un viaje de cultura, azar y chispeza.
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <a href='/welcome'>Ir a User Welcome </a>
-      <a href='/instructions'>Ir a Instructions </a>
-      <a href='/board'>Demo tablero (hay q hacer logica para que este boton esté cdo se inicie sesion etc) </a>
-      <a href='/registro'>Ir a Registro usuario </a>
-    </>
+      </header>
+
+      <main className="card">
+        <a href='/welcome'>👤 Bienvenida de Usuario</a>
+        <a href='/instructions'>📖 Instrucciones</a>
+        <a href='/board'>🎲 Tablero de Juego</a>
+        <a href='/registro'>📝 Registro de Usuario</a>
+      </main>
+
+      <footer className="read-the-docs">
+        Desarrollado por el equipo WebMasters - IIC2513 2025
+      </footer>
+    </div>
   )
 }
 
