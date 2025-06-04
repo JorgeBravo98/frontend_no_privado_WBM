@@ -14,6 +14,7 @@ function App() {
         <a href='/welcome'>👤 Bienvenida de Usuario</a>
         <a href='/instructions'>📖 Instrucciones</a>
         <a href='/board'>🎲 Tablero de Juego</a>
+        <a href='/login'>👤 Inicio Sesión</a>
         <a href='/registro'>📝 Registro de Usuario</a>
       </main>
 

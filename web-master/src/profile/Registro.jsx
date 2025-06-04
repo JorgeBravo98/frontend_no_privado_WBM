@@ -41,7 +41,6 @@ export default function Registro() {
 
     if (!valid) return;
 
-    // Envío exitoso, limpiar o seguir la lógica
     alert("Formulario enviado con éxito");
   };
 
@@ -51,7 +50,7 @@ export default function Registro() {
         <div className="registro-izquierda">
           <div>
             <h2 className="registro-subtitulo">Bienvenido a</h2>
-            <h1 className="registro-titulo">GamerAPI</h1>
+            <h1 className="registro-titulo">100 Pasos por Chile </h1>
             <p className="registro-descripcion">
               ¡Crea una cuenta para unirte a nuestra comunidad de gamers!
             </p>
