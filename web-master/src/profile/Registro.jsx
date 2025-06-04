@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./estilos.css";
+import "../common/App.css";
 
 import avatar1 from "./avatar1.png";
 import avatar2 from "./avatar2.png";

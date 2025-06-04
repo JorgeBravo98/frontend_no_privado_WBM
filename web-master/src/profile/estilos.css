@@ -1,95 +1,84 @@
-/* General */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body, html {
-  height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Contenedor principal */
+/* Contenedor principal del registro/login */
 .registro-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(to right bottom, #4f46e5, #9333ea);
-  padding: 20px;
+  min-height: 80vh;
+  padding: 2rem 0;
 }
 
 /* Tarjeta principal */
 .registro-card {
   display: flex;
-  width: 900px;
-  max-width: 100%;
-  background-color: #ffffff;
-  border-radius: 20px;
+  flex-direction: row;
+  width: 100%;
+  max-width: 700px;
+  background-color: #fff;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 71, 171, 0.10);
+  border: 2px solid #0033a0;
 }
 
 /* Lado izquierdo */
 .registro-izquierda {
-  background-color: #eee6fd;
+  background-color: #f0f4ff;
   flex: 1;
-  padding: 50px 30px;
+  padding: 40px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: #5b21b6;
+  color: #0033a0;
 }
 
 .registro-subtitulo {
-  font-size: 24px;
+  font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .registro-titulo {
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 900;
-  color: #4c1d95;
+  color: #0047AB;
 }
 
 .registro-descripcion {
-  margin-top: 30px;
-  font-size: 16px;
+  margin-top: 24px;
+  font-size: 1rem;
   color: #444;
 }
 
 .registro-imagen {
-  width: 180px;
+  width: 120px;
   align-self: center;
-  margin-top: 40px;
+  margin-top: 32px;
 }
 
 /* Lado derecho */
 .registro-derecha {
   flex: 1;
-  padding: 50px 40px;
+  padding: 40px 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .registro-formulario-titulo {
-  font-size: 24px;
+  font-size: 1.3rem;
   font-weight: bold;
-  margin-bottom: 30px;
-  color: #333;
+  margin-bottom: 24px;
+  color: #0033a0;
 }
 
 .registro-formulario {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .registro-campo label {
-  font-size: 14px;
+  font-size: 0.95rem;
   font-weight: 500;
   color: #555;
   margin-bottom: 5px;
@@ -98,7 +87,7 @@ body, html {
 
 .registro-campo input {
   padding: 10px 15px;
-  font-size: 15px;
+  font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   width: 100%;
@@ -107,15 +96,15 @@ body, html {
 }
 
 .registro-campo input:focus {
-  border-color: #9333ea;
+  border-color: #0074d9;
 }
 
 /* Botón */
 .registro-formulario button {
-  background-color: #7c3aed;
+  background-color: #0047AB;
   color: #fff;
   padding: 12px;
-  font-size: 16px;
+  font-size: 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -123,19 +112,19 @@ body, html {
 }
 
 .registro-formulario button:hover {
-  background-color: #6d28d9;
+  background-color: #0033a0;
 }
 
 /* Link de login */
 .registro-login-link {
-  margin-top: 20px;
+  margin-top: 16px;
   text-align: center;
-  font-size: 14px;
+  font-size: 0.95rem;
   color: #555;
 }
 
 .registro-login-link a {
-  color: #7c3aed;
+  color: #0047AB;
   text-decoration: none;
   font-weight: 500;
 }
@@ -144,16 +133,17 @@ body, html {
   text-decoration: underline;
 }
 
+/* Avatares */
 .registro-avatares {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   margin-top: 10px;
   flex-wrap: wrap;
 }
 
 .registro-avatar {
-  width: 60px;
-  height: 60px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: 2px solid transparent;
   cursor: pointer;
@@ -161,10 +151,10 @@ body, html {
 }
 
 .registro-avatar:hover {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .registro-avatar.seleccionado {
-  border: 2px solid #9333ea;
-  box-shadow: 0 0 5px #9333ea;
+  border: 2px solid #0074d9;
+  box-shadow: 0 0 5px #0074d9;
 }

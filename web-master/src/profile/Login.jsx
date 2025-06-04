@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./estilos.css";
+import "../common/App.css";
 import { Link } from "react-router-dom";
 
 export default function Login() {

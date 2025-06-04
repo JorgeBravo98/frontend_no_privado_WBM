@@ -5,6 +5,7 @@ import App from './App'
 import Board from '../game/Board'
 import Registro from '../profile/Registro'
 import Login from '../profile/Login'
+import Nosotros from './nosotros'
 
 function Routing() {
     return (
@@ -12,7 +13,7 @@ function Routing() {
         <BrowserRouter>
             <Routes>
                 <Route path={'/instructions'} element={<Instructions/>}/>
-                <Route path={'/welcome'} element={<UserWelcome/>}/>  
+                <Route path={'/nosotros'} element={<Nosotros/>}/>  
                 <Route path={'/'} element={<App/>}/>     
                 <Route path={'board'} element={<Board/>}/>  
                 <Route path={'/registro'} element={<Registro/>}/> 
