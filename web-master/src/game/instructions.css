@@ -1,0 +1,59 @@
+.instructions-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+  color: #1a1a1a;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.instructions-title-box {
+  background-color: #0033a0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.instructions-title {
+  font-size: 2.5rem;
+  margin: 0;
+  color: white;
+}
+
+.instructions-subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.instructions-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px solid #0033a0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.instructions-card ol {
+  padding-left: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.instructions-footer {
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: #666;
+}
+
+.section-subtitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0033a0;
+  margin-bottom: 1rem;
+}
+

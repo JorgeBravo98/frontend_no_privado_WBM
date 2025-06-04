@@ -1,13 +1,14 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: url('/src/common/fondo.png') no-repeat center center fixed;
+  background: url('/src/common/fondo.png') repeat-y top center;
+  background-size: cover;
+  background-attachment: fixed;
   color: #1a1a1a;
   margin: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 100vh;
 }
+
+
 
 .landing-container {
   padding: 2rem;
