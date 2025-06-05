@@ -2,40 +2,12 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: url('/src/common/fondo.png') repeat-y top center;
   background-size: cover;
-  background-attachment: fixed;
+  /*background-attachment: fixed; */
   color: #1a1a1a;
   margin: 0;
   min-height: 100vh;
 }
 
-.navbar {
-  width: 100%;
-  background: linear-gradient(90deg, #0047AB 60%, #0074d9 100%);
-  padding: 14px 0;
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  box-shadow: 0 2px 12px rgba(0,71,171,0.10);
-}
-
-.navbar a {
-  color: #fff;
-  font-weight: 500;
-  text-decoration: none;
-  font-size: 1.08rem;
-  transition: color 0.18s, background 0.18s, border-radius 0.18s;
-  padding: 8px 16px;
-  border-radius: 8px;
-}
-
-.navbar a:hover {
-  background: #e3ecff;
-  color: #0047AB;
-}
 
 .landing-container {
   display: flex;
