@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./estilos.css";
 import "../common/App.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -11,7 +14,7 @@ export default function Login() {
 
   const validarEmail = (correo) => correo.includes("@");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     let valido = true;
@@ -33,9 +36,27 @@ export default function Login() {
       setErrorPassword("");
     }
 
-    if (valido) {
-      // Aquí iría la lógica real de login
+    if (!valido) return;
+
+    try {
+      const response = await axios.post("http://localhost:3000/auth/login", {
+        mail: email,
+        password,
+      });
+
+      const { token, message } = response.data;
+
       alert("Inicio de sesión exitoso");
+      localStorage.setItem("token", token); // guardamos el token para futuras rutas
+
+      // Aquí podrías redirigir con useNavigate()
+      // navigate("/board");
+    } catch (error) {
+      if (error.response) {
+        alert("Error: " + error.response.data.error);
+      } else {
+        alert("Error de conexión con el servidor");
+      }
     }
   };
 
