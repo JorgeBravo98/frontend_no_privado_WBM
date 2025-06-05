@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./estilos.css";
 import "../common/App.css";
 
@@ -14,6 +15,7 @@ export default function Registro() {
   const [errorPass, setErrorPass] = useState("");
   const [email, setEmail] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
+  const [name, setName] = useState("");
 
   const avatares = [avatar1, avatar2, avatar3, avatar4];
 
@@ -21,7 +23,7 @@ export default function Registro() {
     return email.includes("@");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     let valid = true;
@@ -42,7 +44,24 @@ export default function Registro() {
 
     if (!valid) return;
 
-    alert("Formulario enviado con éxito");
+    try {
+      const response = await axios.post("http://localhost:3000/auth/register", {
+        name,
+        mail: email,
+        password,
+        avatar: avatarSeleccionado || null,
+        date: null, // podrías agregar un campo para esto
+        type: null
+      });
+
+      alert("Registro exitoso: " + response.data.message);
+    } catch (error) {
+      if (error.response) {
+        alert("Error: " + error.response.data.error);
+      } else {
+        alert("Error de conexión con el servidor");
+      }
+    }
   };
 
   return (
@@ -68,7 +87,13 @@ export default function Registro() {
           <form className="registro-formulario" onSubmit={handleSubmit}>
             <div className="registro-campo">
               <label>Nombre</label>
-              <input type="text" placeholder="Nombre completo" required />
+              <input
+                type="text"
+                placeholder="Nombre completo"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
             </div>
 
             <div className="registro-campo">
