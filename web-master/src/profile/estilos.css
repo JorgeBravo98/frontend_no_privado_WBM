@@ -2,10 +2,11 @@
 .registro-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;   
+  padding: 7.5rem 0 2rem;       
   min-height: 80vh;
-  padding: 2rem 0;
 }
+
 
 /* Tarjeta principal */
 .registro-card {
@@ -22,12 +23,13 @@
 
 /* Lado izquierdo */
 .registro-izquierda {
-  background-color: #f0f4ff;
+  background-color: #e2e3e4;
   flex: 1;
   padding: 40px 24px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center; 
   color: #0033a0;
 }
 
@@ -50,9 +52,10 @@
 }
 
 .registro-imagen {
-  width: 120px;
-  align-self: center;
-  margin-top: 32px;
+  width: 200px;
+  height: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 /* Lado derecho */
@@ -75,6 +78,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  align-items: center;       
 }
 
 .registro-campo label {
@@ -90,9 +94,11 @@
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
-  width: 100%;
+  width: 260px;               
+  max-width: 100%;           
   outline: none;
   transition: border 0.3s;
+  background-color: #fff;
 }
 
 .registro-campo input:focus {
@@ -103,12 +109,14 @@
 .registro-formulario button {
   background-color: #0047AB;
   color: #fff;
-  padding: 12px;
+  padding: 12px 24px;
   font-size: 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
+  width: 292px;           
+  max-width: 100%;
 }
 
 .registro-formulario button:hover {

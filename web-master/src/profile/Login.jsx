@@ -80,8 +80,8 @@ export default function Login() {
             </p>
           </div>
           <img
-            src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png"
-            alt="Gaming Icon"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/512px-Flag_of_Chile.svg.png"
+            alt="Chilito"
             className="registro-imagen"
           />
         </div>
