@@ -7,6 +7,8 @@ import Registro from '../profile/Registro'
 import Login from '../profile/Login'
 import Nosotros from './nosotros'
 import CrearPartida from '../game/CrearPartida';
+import WaitingRoom from "../game/WaitingRoom";
+import UnirsePartida from "../game/UnirsePartida";
 
 function Routing() {
     return (
@@ -20,6 +22,9 @@ function Routing() {
                 <Route path={'/registro'} element={<Registro/>}/> 
                 <Route path={'/login'} element={<Login/>}/>  
                 <Route path={'/crear'} element={<CrearPartida />} />
+                <Route path={'/waiting-room/:id'} element={<WaitingRoom />} />
+                <Route path={'/unirse'} element={<UnirsePartida />} />
+
             </Routes>
         </BrowserRouter>
         </>
