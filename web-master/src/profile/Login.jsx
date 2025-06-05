@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./estilos.css";
 import "../common/App.css";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -12,7 +10,16 @@ export default function Login() {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const validarEmail = (correo) => correo.includes("@");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/"); // Si ya hay sesión, redirige a inicio
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,13 +51,13 @@ export default function Login() {
         password,
       });
 
-      const { token, message } = response.data;
+      const { token } = response.data;
 
       alert("Inicio de sesión exitoso");
-      localStorage.setItem("token", token); // guardamos el token para futuras rutas
+      localStorage.setItem("token", token);
+      window.dispatchEvent(new Event("authChange")); // 👈 notifica al navbar
+      navigate("/");
 
-      // Aquí podrías redirigir con useNavigate()
-      // navigate("/board");
     } catch (error) {
       if (error.response) {
         alert("Error: " + error.response.data.error);
