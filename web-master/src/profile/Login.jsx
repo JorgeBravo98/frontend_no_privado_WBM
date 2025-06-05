@@ -45,26 +45,27 @@ export default function Login() {
 
     if (!valido) return;
 
-    try {
-      const response = await axios.post("http://localhost:3000/auth/login", {
-        mail: email,
-        password,
-      });
+  try {
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, {
+      mail: email,
+      password,
+    });
 
-      const { token } = response.data;
+    const { token } = response.data;
 
-      alert("Inicio de sesión exitoso");
-      localStorage.setItem("token", token);
-      window.dispatchEvent(new Event("authChange")); // 👈 notifica al navbar
-      navigate("/");
-
-    } catch (error) {
-      if (error.response) {
-        alert("Error: " + error.response.data.error);
-      } else {
-        alert("Error de conexión con el servidor");
-      }
+    alert("Inicio de sesión exitoso");
+    localStorage.setItem("token", token);
+    window.dispatchEvent(new Event("authChange"));
+    navigate("/");
+  } catch (error) {
+    console.error("Error al conectar:", error);
+    if (error.response) {
+      alert("Error: " + error.response.data.error);
+    } else {
+      alert("Error de conexión con el servidor");
     }
+  }
+
   };
 
   return (

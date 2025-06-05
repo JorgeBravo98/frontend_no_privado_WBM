@@ -6,6 +6,7 @@ import Board from '../game/Board'
 import Registro from '../profile/Registro'
 import Login from '../profile/Login'
 import Nosotros from './nosotros'
+import CrearPartida from '../game/CrearPartida';
 
 function Routing() {
     return (
@@ -18,6 +19,7 @@ function Routing() {
                 <Route path={'board'} element={<Board/>}/>  
                 <Route path={'/registro'} element={<Registro/>}/> 
                 <Route path={'/login'} element={<Login/>}/>  
+                <Route path={'/crear'} element={<CrearPartida />} />
             </Routes>
         </BrowserRouter>
         </>

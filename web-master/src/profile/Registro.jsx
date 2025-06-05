@@ -45,7 +45,8 @@ export default function Registro() {
     if (!valid) return;
 
     try {
-      const response = await axios.post("http://localhost:3000/auth/register", {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/register`, {
+
         name,
         mail: email,
         password,
