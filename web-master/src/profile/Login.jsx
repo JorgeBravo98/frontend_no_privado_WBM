@@ -55,7 +55,7 @@ export default function Login() {
 
       alert("Inicio de sesión exitoso");
       localStorage.setItem("token", token);
-      window.dispatchEvent(new Event("authChange")); // 👈 notifica al navbar
+      window.dispatchEvent(new Event("authChange")); 
       navigate("/");
 
     } catch (error) {
