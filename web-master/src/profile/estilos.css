@@ -2,11 +2,13 @@
 .registro-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;   
-  padding: 7.5rem 0 2rem;       
+  align-items: flex-start;
+  padding: 6.5rem 0 2rem;      
   min-height: 80vh;
+  
+  position: relative;        
+  z-index: 2;                
 }
-
 
 /* Tarjeta principal */
 .registro-card {
@@ -14,11 +16,14 @@
   flex-direction: row;
   width: 100%;
   max-width: 700px;
-  background-color: #fff;
+  background-color: #ffffff; /* totalmente opaco */
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 71, 171, 0.10);
   border: 2px solid #0033a0;
+
+  position: relative;        
+  z-index: 3;                
 }
 
 /* Lado izquierdo */
