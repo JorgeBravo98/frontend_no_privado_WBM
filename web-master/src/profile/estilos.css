@@ -1,4 +1,3 @@
-/* Contenedor principal del registro/login */
 .registro-container {
   display: flex;
   justify-content: center;
@@ -10,23 +9,20 @@
   z-index: 2;                
 }
 
-/* Tarjeta principal */
 .registro-card {
   display: flex;
   flex-direction: row;
   width: 100%;
   max-width: 700px;
-  background-color: #ffffff; /* totalmente opaco */
+  background-color: #ffffff; 
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 71, 171, 0.10);
   border: 2px solid #0033a0;
-
   position: relative;        
   z-index: 3;                
 }
 
-/* Lado izquierdo */
 .registro-izquierda {
   background-color: #e2e3e4;
   flex: 1;
@@ -63,7 +59,6 @@
   margin-bottom: auto;
 }
 
-/* Lado derecho */
 .registro-derecha {
   flex: 1;
   padding: 40px 32px;
@@ -110,7 +105,6 @@
   border-color: #0074d9;
 }
 
-/* Botón */
 .registro-formulario button {
   background-color: #0047AB;
   color: #fff;
@@ -120,7 +114,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
-  width: 292px;           
+  width: 262px;           
   max-width: 100%;
 }
 
@@ -128,7 +122,6 @@
   background-color: #0033a0;
 }
 
-/* Link de login */
 .registro-login-link {
   margin-top: 16px;
   text-align: center;
@@ -149,8 +142,8 @@
 /* Avatares */
 .registro-avatares {
   display: flex;
-  gap: 12px;
-  margin-top: 10px;
+  gap: 20px;
+  margin-top: 5px;
   flex-wrap: wrap;
 }
 
