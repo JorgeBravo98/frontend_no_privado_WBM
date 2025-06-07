@@ -2,10 +2,12 @@ import { useState } from "react";
 import axios from "axios";
 import "../common/App.css";
 import "./CrearPartida.css";
+import { useNavigate } from "react-router-dom";
 
 export default function CrearPartida() {
   const [nombre, setNombre] = useState("");
   const [mensaje, setMensaje] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,8 +27,8 @@ export default function CrearPartida() {
         }
       });
 
-      setMensaje("Partida creada con éxito.");
-      setNombre("");
+      const gameId = response.data.game.id;
+      navigate(`/waiting-room/${gameId}`); // ← redirección automática
     } catch (error) {
       setMensaje("Error al crear la partida.");
     }

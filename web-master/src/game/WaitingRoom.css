@@ -1,0 +1,33 @@
+.waiting-container {
+  text-align: center;
+  margin-top: 40px;
+  background: #f0f8ff;
+  padding: 6rem 2rem 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.slots {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 20px;
+}
+
+.slot {
+  width: 150px;
+  height: 100px;
+  background-color: #d9eaff;
+  border: 2px solid #0077cc;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.game-id {
+  margin-top: 20px;
+  color: #555;
+}
