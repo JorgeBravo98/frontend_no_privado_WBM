@@ -27,6 +27,7 @@ function App() {
           <>
             <a href='/crear'>🆕 Crear partida</a>
             <a href='/unirse'>🔗 Unirse a partida</a>
+            <a href='/mis-partidas'>📋 Ver mis partidas</a> 
           </>
         )}
       </div>
