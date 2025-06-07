@@ -12,8 +12,8 @@ export default function Nosotros() {
       <div className="nosotros-equipo">
         <div className="nosotros-miembro">
           <img
-            src="https://randomuser.me/api/portraits/men/32.jpg"
-            alt="Miembro 1"
+            src={new URL('../assets/nico.jpg', import.meta.url).href}
+            alt="Nicolás Vial"
             className="nosotros-foto"
           />
           <h3>Nicolás Vial</h3>

@@ -9,6 +9,8 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
+  const [mensaje, setMensaje] = useState("");
+  const [tipoMensaje, setTipoMensaje] = useState(""); // "exito" o "error"
 
   const navigate = useNavigate();
 
@@ -53,16 +55,18 @@ export default function Login() {
 
       const { token } = response.data;
 
-      alert("Inicio de sesión exitoso");
+      setTipoMensaje("exito");
+      setMensaje("¡Inicio de sesión exitoso!");
       localStorage.setItem("token", token);
-      window.dispatchEvent(new Event("authChange")); 
-      navigate("/");
+      window.dispatchEvent(new Event("authChange"));
+      setTimeout(() => navigate("/"), 1200); // Redirige tras 1.2s
 
     } catch (error) {
-      if (error.response) {
-        alert("Error: " + error.response.data.error);
+      setTipoMensaje("error");
+      if (error.response && error.response.data && error.response.data.error) {
+        setMensaje("Error: " + error.response.data.error);
       } else {
-        alert("Error de conexión con el servidor");
+        setMensaje("Error de conexión con el servidor");
       }
     }
   };
@@ -111,6 +115,12 @@ export default function Login() {
               />
               {errorPassword && <p className="error">{errorPassword}</p>}
             </div>
+
+            {mensaje && (
+              <div className={`mensaje-frontend ${tipoMensaje}`}>
+                {mensaje}
+              </div>
+            )}
 
             <button type="submit">Ingresar</button>
           </form>

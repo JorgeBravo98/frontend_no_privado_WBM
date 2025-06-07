@@ -19,6 +19,8 @@ export default function Registro() {
   const [email, setEmail] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [name, setName] = useState("");
+  const [mensaje, setMensaje] = useState("");
+  const [tipoMensaje, setTipoMensaje] = useState(""); // "exito" o "error"
 
   const avatares = [avatar1, avatar2, avatar3, avatar4];
 
@@ -57,18 +59,19 @@ export default function Registro() {
         type: null
       });
 
-      // Guarda el token y haz login automático
-      const { token } = response.data; // Ajusta si tu backend responde distinto
+      const { token } = response.data;
       localStorage.setItem("token", token);
       window.dispatchEvent(new Event("authChange"));
-      alert("Registro exitoso");
-      navigate("/"); 
+      setTipoMensaje("exito");
+      setMensaje("¡Registro exitoso! Bienvenido a 100 Pasos por Chile.");
+      setTimeout(() => navigate("/"), 1500); // Redirige después de 1.5s
 
     } catch (error) {
-      if (error.response) {
-        alert("Error: " + error.response.data.error);
+      setTipoMensaje("error");
+      if (error.response && error.response.data && error.response.data.error) {
+        setMensaje("Error: " + error.response.data.error); // Puedes personalizar aún más este mensaje
       } else {
-        alert("Error de conexión con el servidor");
+        setMensaje("Error de conexión con el servidor");
       }
     }
   };
@@ -156,7 +159,11 @@ export default function Registro() {
                 ))}
               </div>
             </div>
-
+            {mensaje && (
+              <div className={`mensaje-frontend ${tipoMensaje}`}>
+                {mensaje}
+              </div>
+            )}
             <button type="submit">Crear cuenta</button>
           </form>
 

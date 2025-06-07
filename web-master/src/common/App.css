@@ -258,3 +258,21 @@ z-index: 1;
   margin-top: 18px;
   font-size: 1.05rem;
 }
+
+.mensaje-frontend {
+  margin: 16px 0;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+}
+.mensaje-frontend.exito {
+  background: #e6fbe6;
+  color: #1e7e34;
+  border: 1.5px solid #1e7e34;
+}
+.mensaje-frontend.error {
+  background: #ffeaea;
+  color: #b02a2a;
+  border: 1.5px solid #b02a2a;
+}

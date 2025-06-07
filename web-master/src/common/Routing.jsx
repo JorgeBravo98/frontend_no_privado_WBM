@@ -9,6 +9,7 @@ import CrearPartida from '../game/CrearPartida';
 import WaitingRoom from "../game/WaitingRoom";
 import UnirsePartida from "../game/UnirsePartida";
 import PartidasExistentes from '../game/PartidasExistentes'
+import Perfil from '../profile/perfil'
 
 function Routing() {
     return (
@@ -25,6 +26,7 @@ function Routing() {
                 <Route path={'/waiting-room/:id'} element={<WaitingRoom />} />
                 <Route path={'/unirse'} element={<UnirsePartida />} />
                 <Route path={'/mis-partidas'} element={<PartidasExistentes />} />
+                <Route path={'/perfil'} element={<Perfil />} />
             </Routes>
         </BrowserRouter>
         </>

@@ -1,5 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; 
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,16 +20,18 @@ function App() {
       </header>
 
       <div className="card">
-        <a href='/nosotros'>👤 Sobre nosotros</a>
-        <a href='/instructions'>📖 Instrucciones</a>
-        <a href='/board'>🎲 Tablero de Juego</a>
+        <Link to='/nosotros'>👤 Sobre nosotros</Link>
+        <Link to='/instructions'>📖 Instrucciones</Link>
+        <Link to='/board'>🎲 Tablero de Juego</Link>
 
-        {isLoggedIn && (
+        {isLoggedIn ? (
           <>
-            <a href='/crear'>🆕 Crear partida</a>
-            <a href='/unirse'>🔗 Unirse a partida</a>
-            <a href='/mis-partidas'>📋 Ver mis partidas</a> 
+            <Link to='/crear'>🆕 Crear partida</Link>
+            <Link to='/unirse'>🔗 Unirse a partida</Link>
+            <Link to='/mis-partidas'>📋 Ver mis partidas</Link>
           </>
+        ) : (
+          <Link to='/login' className="jugar-btn">¡Ir a Jugar!</Link>
         )}
       </div>
 

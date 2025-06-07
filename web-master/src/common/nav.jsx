@@ -1,6 +1,7 @@
 import './App.css';
 import './nav.css';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; // Importa Link para navegación interna
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
@@ -16,8 +17,8 @@ function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.dispatchEvent(new Event("authChange")); // Notifica a los componentes
-    window.location.href = "/"; // Redirige y actualiza visual
+    window.dispatchEvent(new Event("authChange"));
+    window.location.href = "/";
   };
 
   return (
@@ -32,9 +33,12 @@ function Navbar() {
             <a href="/registro">📝 Registro de Usuario</a>
           </>
         ) : (
-          <button onClick={handleLogout} className="navbar-link">
-            🚪 Cerrar sesión
-          </button>
+          <>
+            <a href="/perfil">🙍‍♂️ Mi Perfil</a>
+            <button onClick={handleLogout} className="navbar-link">
+              🚪 Cerrar sesión
+            </button>
+          </>
         )}
       </div>
     </nav>
