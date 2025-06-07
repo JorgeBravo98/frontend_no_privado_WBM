@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./estilos.css";
 import "../common/App.css";
+import { useNavigate } from "react-router-dom";
 
 import avatar1 from "./avatar1.png";
 import avatar2 from "./avatar2.png";
@@ -16,6 +17,7 @@ export default function Registro() {
   const [email, setEmail] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [name, setName] = useState("");
+  const navigate = useNavigate();
 
   const avatares = [avatar1, avatar2, avatar3, avatar4];
 
@@ -46,16 +48,21 @@ export default function Registro() {
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/register`, {
-
         name,
         mail: email,
         password,
         avatar: avatarSeleccionado || null,
-        date: null, // podrías agregar un campo para esto
+        date: null,
         type: null
       });
 
-      alert("Registro exitoso: " + response.data.message);
+      const { token } = response.data;
+
+      alert("Registro exitoso");
+      localStorage.setItem("token", token);
+      window.dispatchEvent(new Event("authChange"));
+      navigate("/");
+
     } catch (error) {
       if (error.response) {
         alert("Error: " + error.response.data.error);
