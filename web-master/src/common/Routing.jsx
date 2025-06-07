@@ -1,6 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Instructions from '../game/instructions'
-import UserWelcome from '../profile/UserWelcome'
 import App from './App'
 import Board from '../game/Board'
 import Registro from '../profile/Registro'
@@ -9,6 +8,7 @@ import Nosotros from './nosotros'
 import CrearPartida from '../game/CrearPartida';
 import WaitingRoom from "../game/WaitingRoom";
 import UnirsePartida from "../game/UnirsePartida";
+import PartidasExistentes from '../game/PartidasExistentes'
 
 function Routing() {
     return (
@@ -24,7 +24,7 @@ function Routing() {
                 <Route path={'/crear'} element={<CrearPartida />} />
                 <Route path={'/waiting-room/:id'} element={<WaitingRoom />} />
                 <Route path={'/unirse'} element={<UnirsePartida />} />
-
+                <Route path={'/mis-partidas'} element={<PartidasExistentes />} />
             </Routes>
         </BrowserRouter>
         </>

@@ -49,7 +49,6 @@ export default function Registro() {
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/register`, {
-
         name,
         mail: email,
         password,
@@ -58,8 +57,13 @@ export default function Registro() {
         type: null
       });
 
-      alert("Registro exitoso: " + response.data.message);
+      // Guarda el token y haz login automático
+      const { token } = response.data; // Ajusta si tu backend responde distinto
+      localStorage.setItem("token", token);
+      window.dispatchEvent(new Event("authChange"));
+      alert("Registro exitoso");
       navigate("/"); 
+
     } catch (error) {
       if (error.response) {
         alert("Error: " + error.response.data.error);
