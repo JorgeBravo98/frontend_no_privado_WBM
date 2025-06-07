@@ -6,7 +6,6 @@ import Routing from './Routing.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Navbar/>
     <Routing/>
   </StrictMode>,
 )
