@@ -1,37 +1,58 @@
+:root {
+  --color-primary: #003580;
+  --color-secondary: #0074d9;
+  --color-bg-start: #e3ecff;
+  --color-bg-end: #f8fbff;
+  --color-border: #0047AB;
+  --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .board {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px 20px 20px 20px;
-  background: linear-gradient(135deg, #e3ecff 0%, #f8fbff 100%);
+  padding: 100px 20px 20px;
+  background: linear-gradient(135deg, var(--color-bg-start) 0%, var(--color-bg-end) 100%);
   border-radius: 24px;
   box-shadow: 0 8px 32px rgba(0, 71, 171, 0.08);
+  font-family: var(--font-sans);
 }
 
 .board h1 {
   font-size: 2.3rem;
-  color: #003580;
-  margin-bottom: 2px;
+  color: var(--color-primary);
+  margin-bottom: 8px;
   letter-spacing: 1px;
   font-weight: 700;
-  text-shadow: 0 2px 8px #e3ecff;
+  text-shadow: 0 2px 8px rgba(227, 236, 255, 0.6);
 }
 
 .board .subtitle {
   font-size: 1.1rem;
-  color: #0074d9;
-  margin-bottom: 24px;
+  color: var(--color-secondary);
+  margin-bottom: 32px;
   font-weight: 500;
   letter-spacing: 0.5px;
 }
 
 .board-grid {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 1fr);
   width: 520px;
   height: 520px;
-  border: 3px solid #0047AB;
+  border: 3px solid var(--color-border);
   background: linear-gradient(120deg, #f0f4ff 60%, #e3ecff 100%);
   box-shadow: 0 8px 32px rgba(0, 71, 171, 0.10);
   border-radius: 18px;
@@ -47,16 +68,11 @@
   font-size: 1.05rem;
   color: #222b45;
   user-select: none;
-  background: #f8fbff;
-  transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
+  background: transparent;
+  transition: none;
   border-radius: 8px;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0,71,171,0.03);
+  box-shadow: 0 1px 3px rgba(0, 71, 171, 0.03);
 }
 
-.square:hover {
-  background: linear-gradient(120deg, #e3ecff 60%, #f0f4ff 100%);
-  box-shadow: 0 4px 16px rgba(0, 102, 204, 0.10);
-  transform: scale(1.06);
-  border-color: #0074d9;
-}
+

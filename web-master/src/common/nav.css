@@ -1,7 +1,7 @@
 .navbar {
   width: 100%;
   background: linear-gradient(90deg, #0047AB 60%, #0074d9 100%);
-  padding: 14px 0;
+  padding: 1px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;

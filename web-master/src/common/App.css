@@ -1,65 +1,191 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: url('/src/common/fondo.png') repeat-y top center;
-  background-size: cover;
-  /*background-attachment: fixed; */
-  color: #1a1a1a;
-  margin: 0;
-  min-height: 100vh;
+:root {
+--color-primary: #1e54ca;
+--color-secondary: #e62e20;
+--color-card-bg: rgba(255, 255, 255, 0.95);
+--color-card-border: #0033a0;
+--color-card-hover-bg: #e0e8f9;
+--font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+font-family: var(--font-sans);
+background: url('/src/common/fondo.png') repeat-y top center;
+background-size: cover;
+background-attachment: fixed;
+color: #1a1a1a;
+min-height: 100vh;
+position: relative;
+overflow-x: hidden;
+}
+
+body::before {
+content: "";
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(255, 255, 255, 0.1);
+backdrop-filter: blur(4px);
+z-index: 0;
+}
 
 .landing-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* Puedes usar 'center' si quieres centrar verticalmente todo */
-  min-height: 100vh;
-  padding: 320px 2rem 2rem 2rem; /* 96px arriba para separar bien del navbar */
-  text-align: center;
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
+position: relative;
+z-index: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+min-height: 100vh;
+padding: 100px 1.9rem 2rem;
+text-align: center;
+max-width: 640px;
+margin: 0 auto;
+opacity: 0;
+animation: fadeIn 0.8s ease-out 0.2s forwards;
+}
+
+@keyframes fadeIn {
+to {
+opacity: 1;
+}
 }
 
 h1 {
-  color: #0033a0;
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
+color: var(--color-primary);
+font-size: 3.5rem;
+font-weight: 800;
+line-height: 1.1;
+margin-bottom: 1.5rem;
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+background: linear-gradient(90deg, var(--color-primary), #577adb);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+position: relative;
+z-index: 1;
 }
 
 .subtitle {
-  color: #d52b1e;
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  font-weight: 800;
+color: var(--color-secondary);
+font-size: 1.25rem;
+font-weight: 700;
+margin-bottom: 3rem;
+position: relative;
+z-index: 1;
+}
+
+.subtitle::after {
+content: "";
+position: absolute;
+left: 50%;
+bottom: -4px;
+width: 0;
+height: 3px;
+background: var(--color-secondary);
+border-radius: 2px;
+transform: translateX(-50%);
+transition: width 0.4s ease-out;
+}
+
+.subtitle:hover::after {
+width: 60%;
 }
 
 .card {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 12px;
-  border: 2px solid #0033a0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  margin: auto;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
+  gap: 1px;             
+  margin-top: 5px;
+  width: 100%;
+  max-width: 300px;    
+  z-index: 1;
 }
 
 .card a {
-  display: block;
-  margin: 1rem 0;
-  font-weight: bold;
-  color: #0033a0;
-  text-decoration: none;
-  transition: color 0.3s;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+background: var(--color-card-bg);
+padding: 0.6rem 1rem;
+border-radius: 14px;
+border: 2px solid var(--color-card-border);
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+font-size: 1.25rem;
+font-weight: 600;
+color: var(--color-card-border);
+text-decoration: none;
+transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+position: relative;
+overflow: hidden;
+width: 100%; 
 }
 
 .card a:hover {
-  color: #d52b1e;
+background: var(--color-card-hover-bg);
+transform: translateY(-4px);
+box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+}
+
+.card a span {
+display: block;
+font-size: 2rem;
+margin-bottom: 0.4rem;
+animation: iconPop 0.4s ease-out;
+}
+
+@keyframes iconPop {
+0% {
+transform: scale(0.7);
+opacity: 0;
+}
+100% {
+transform: scale(1);
+opacity: 1;
+}
+}
+
+.card a h3 {
+margin: 0.25rem 0 0.1rem;
+font-size: 1.1rem;
+color: var(--color-primary);
+}
+
+.card a p {
+margin: 0;
+font-size: 0.9rem;
+color: #4a4a4a;
+line-height: 1.3;
 }
 
 .read-the-docs {
-  margin-top: 2rem;
-  font-size: 0.85rem;
-  color: #666;
+margin-top: 4rem;
+font-size: 0.85rem;
+color: #666;
+position: relative;
+z-index: 1;
+}
+
+.nosotros-container {
+  max-width: 800px;
+  margin: 40px auto;
+  margin-top: 100px;
+  padding: 32px 16px;
+  text-align: center;
+  background: rgba(255,255,255,0.95); 
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(30, 84, 202, 0.10);
+  position: relative;
+  z-index: 2; 
 }
 
