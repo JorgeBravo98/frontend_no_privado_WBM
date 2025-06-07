@@ -30,8 +30,8 @@ export default function Nosotros() {
         </div>
         <div className="nosotros-miembro">
           <img
-            src="https://randomuser.me/api/portraits/women/65.jpg"
-            alt="Miembro 3"
+            src={new URL('./balta.jpeg', import.meta.url).href}
+            alt="Balta"
             className="nosotros-foto"
           />
           <h3>Baltazar Pieber</h3>

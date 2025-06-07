@@ -54,7 +54,7 @@ export default function Registro() {
         mail: email,
         password,
         avatar: avatarSeleccionado || null,
-        date: null, // podrías agregar un campo para esto
+        date: null, 
         type: null
       });
 
@@ -77,7 +77,7 @@ export default function Registro() {
             <h2 className="registro-subtitulo">Bienvenido a</h2>
             <h1 className="registro-titulo">100 Pasos por Chile </h1>
             <p className="registro-descripcion">
-              ¡Crea una cuenta para unirte a nuestra comunidad de gamers!
+              ¡Crea una cuenta para unirte a nuestra comunidad chilena!
             </p>
           </div>
           <img
