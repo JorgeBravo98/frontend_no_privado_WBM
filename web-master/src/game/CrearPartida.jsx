@@ -39,7 +39,7 @@ export default function CrearPartida() {
       <div className="card">
         <h2 className="crear-titulo">Crear nueva partida</h2>
         <form onSubmit={handleSubmit} className="crear-formulario">
-          <label htmlFor="nombre">Nombre de la partida</label>
+          <label htmlFor="nombre">Crea el nombre de la partida</label>
           <input
             id="nombre"
             type="text"

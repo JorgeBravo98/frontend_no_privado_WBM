@@ -1,33 +1,40 @@
 .waiting-container {
-  text-align: center;
-  margin-top: 40px;
-  background: #f0f8ff;
-  padding: 6rem 2rem 2rem;
+  position: relative;
+  z-index:2;                 
+  max-width: 750px;           
+  margin: 7rem auto;           
+  background: rgba(255, 255, 255, 0.95); 
+  backdrop-filter: none;        
+  padding: 3rem 2rem;           
   border-radius: 1.5rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border: 2px solid #0077cc;
 }
 
 .slots {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 20px;
+  margin-top: 1.5rem;
 }
 
 .slot {
-  width: 150px;
-  height: 100px;
-  background-color: #d9eaff;
+  width: 140px;
+  height: 90px;
+  background-color: #dbd2d2;    
   border: 2px solid #0077cc;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
+  font-weight: 600;
+  color: #003580;
+  box-shadow: 0 4px 12px rgba(0, 71, 171, 0.08);
 }
 
 .game-id {
-  margin-top: 20px;
+  margin-top: 1.5rem;
   color: #555;
+  font-size: 0.95rem;
 }

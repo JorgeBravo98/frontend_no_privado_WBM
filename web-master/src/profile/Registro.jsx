@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./estilos.css";
 import "../common/App.css";
+import { Link, useNavigate } from "react-router-dom";
+
 
 import avatar1 from "./avatar1.png";
 import avatar2 from "./avatar2.png";
@@ -9,6 +11,7 @@ import avatar3 from "./avatar3.png";
 import avatar4 from "./avatar4.png";
 
 export default function Registro() {
+  const navigate = useNavigate();
   const [avatarSeleccionado, setAvatarSeleccionado] = useState(null);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -56,6 +59,7 @@ export default function Registro() {
       });
 
       alert("Registro exitoso: " + response.data.message);
+      navigate("/"); 
     } catch (error) {
       if (error.response) {
         alert("Error: " + error.response.data.error);
