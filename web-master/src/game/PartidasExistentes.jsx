@@ -19,7 +19,7 @@ export default function PartidasExistentes() {
     const fetchPartidas = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/games/mine`, // asegúrate que esta ruta exista en tu backend
+          `${import.meta.env.VITE_BACKEND_URL}/games/user/my`, // asegúrate que esta ruta exista en tu backend
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -44,16 +44,16 @@ export default function PartidasExistentes() {
       <h2>Mis Partidas</h2>
       {mensaje && <p>{mensaje}</p>}
       <ul>
-        {partidas.length > 0 ? (
+        {Array.isArray(partidas) && partidas.length > 0 ? (
           partidas.map((partida) => (
             <li key={partida.id}>
               <strong>{partida.name}</strong> - ID: {partida.id}
               <button onClick={() => handleIrSala(partida.id)}>Ir a Sala</button>
             </li>
           ))
-        ) : (
+        ) : !mensaje ? (
           <p>No estás unido a ninguna partida.</p>
-        )}
+        ) : null}
       </ul>
     </div>
   );
