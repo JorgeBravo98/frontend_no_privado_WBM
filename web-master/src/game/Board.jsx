@@ -1,27 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import './Board.css';
 
 export default function Board() {
-  const filas = [];
-  for (let fila = 0; fila < 10; fila++) {
-    const inicio = fila * 10 + 1;
-    let numeros = Array.from({ length: 10 }, (_, i) => inicio + i);
-    if (fila % 2 === 1) {
-      numeros = numeros.reverse();
-    }
-    filas.push(numeros);
-  }
+  const { id } = useParams();
+  const token = localStorage.getItem("token");
+  const [tablero, setTablero] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const squares = filas.flat();
+  useEffect(() => {
+    const fetchBoard = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games/${id}/board`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+
+        if (Array.isArray(response.data) && response.data.length >= 100) {
+          setTablero(response.data);
+          setLoading(false);
+        } else {
+          setTimeout(fetchBoard, 1000);
+        }
+      } catch (error) {
+        console.error("Error al cargar el tablero:", error);
+      }
+    };
+
+    fetchBoard();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="board">
+        <h2>⏳ Cargando tablero...</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="board">
       <h1>100 Pasos por Chile</h1>
       <p className="subtitle">Recorre el país descubriendo sus maravillas</p>
       <div className="board-grid">
-        {squares.map((num) => (
-          <div key={num} className="square">
-            {num}
+        {tablero.map((box) => (
+          <div key={box.number} className="square">
+            <div className="square-number">{box.number}</div>
+            <div className="players-in-square">
+              {box.players.map((name, idx) => (
+                <span key={idx} className="player-token">{name}</span>
+              ))}
+            </div>
           </div>
         ))}
       </div>

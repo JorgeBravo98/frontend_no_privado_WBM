@@ -1,30 +1,74 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./WaitingRoom.css";
 
 export default function WaitingRoom() {
   const { id } = useParams();
   const [jugadores, setJugadores] = useState([]);
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    const fetchGame = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games/${id}`, {
+  const currentUser = (() => {
+    try {
+      return JSON.parse(atob(token.split('.')[1]));
+    } catch {
+      return null;
+    }
+  })();
+
+  const fetchGame = async () => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games/${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      const game = response.data;
+      setJugadores(game.jugadores);
+
+      if (game.en_progreso) {
+        navigate(`/board/${id}`);
+      }
+    } catch (error) {
+      console.error("Error al obtener la partida:", error);
+    }
+  };
+
+  const handleStartGame = async () => {
+    try {
+      await axios.patch(`${import.meta.env.VITE_BACKEND_URL}/games/${id}/start`, {}, {
+
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      let intentos = 0;
+      while (intentos < 10) {
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/games/${id}/board`, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        setJugadores(response.data.jugadores);
-      } catch (error) {
-        console.error("Error al obtener la partida:", error);
-      }
-    };
 
+        if (Array.isArray(res.data) && res.data.length >= 100) {
+          navigate(`/board/${id}`);
+          return;
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 300));
+        intentos++;
+      }
+
+      alert("No se pudo cargar el tablero. Intenta nuevamente.");
+    } catch (error) {
+      alert("No se pudo iniciar la partida. ¿Están todos listos?");
+    }
+  };
+
+  useEffect(() => {
     fetchGame();
     const intervalo = setInterval(fetchGame, 3000);
-
     return () => clearInterval(intervalo);
   }, [id]);
+
+  const esHost = jugadores.find(j => j.user.id === currentUser?.id)?.rol === "host";
 
   return (
     <div className="waiting-container">
@@ -35,9 +79,9 @@ export default function WaitingRoom() {
           return (
             <div key={i} className="slot">
               {jugador ? (
-                <div>
-                  <strong>{jugador.user.name}</strong>
-                  <p>{jugador.rol === "host" ? "Creador" : "Invitado"}</p>
+                <div className="player-info">
+                  <p className="player-name">{jugador.user.name}</p>
+                  <p className="player-role">{jugador.rol === "host" ? "Creador" : "Invitado"}</p>
                 </div>
               ) : (
                 <p>Vacante...</p>
@@ -47,6 +91,12 @@ export default function WaitingRoom() {
         })}
       </div>
       <p className="game-id">ID de la partida: <code>{id}</code></p>
+
+      {esHost && jugadores.length === 4 && (
+        <button className="start-button" onClick={handleStartGame}>
+          🚀 Iniciar Partida
+        </button>
+      )}
     </div>
   );
 }
