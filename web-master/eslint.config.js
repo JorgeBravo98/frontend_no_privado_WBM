@@ -1,33 +1,49 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
+// eslint.config.js
+import { builtinModules } from "module";
+import parser from "@babel/eslint-parser";
 
 export default [
-  { ignores: ['dist'] },
   {
-    files: ['**/*.{js,jsx}'],
+    ignores: ["node_modules/**"],
+  },
+  {
+    files: ["**/*.js?(x)"],
+
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      parser,
       parserOptions: {
-        ecmaVersion: 'latest',
-        ecmaFeatures: { jsx: true },
-        sourceType: 'module',
+        ecmaVersion: 2021,
+        sourceType: "module",
+        requireConfigFile: false,
+        babelOptions: {
+          plugins: ["@babel/plugin-syntax-jsx"],
+        },
+      },
+      globals: {
+        ...builtinModules.reduce((acc, mod) => {
+          acc[mod] = "readonly";
+          return acc;
+        }, {}),
+        browser: true,
+        node: true,
       },
     },
-    plugins: {
-      'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
-    },
+
     rules: {
-      ...js.configs.recommended.rules,
-      ...reactHooks.configs.recommended.rules,
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      "no-undef": "error",
+      "quotes": ["warn", "double"],
+      "no-console": "error",
+      "semi": ["error", "always"],
+      "no-var": "warn",
+      "func-names": "error",
+      "no-trailing-spaces": "warn",
+      "space-before-blocks": ["error", "always"],
+      "quote-props": ["error", "consistent"],
+      "no-unused-vars": "error",
+      "indent": ["error", 2],
+      "no-eval": "error",
+      "camelcase": ["warn", { "properties": "never" }],
+      "no-multiple-empty-lines": ["error", { "max": 1 }],
     },
   },
-]
+];
