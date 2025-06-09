@@ -44,7 +44,10 @@ export default function Board() {
       <p className="subtitle">Recorre el país descubriendo sus maravillas</p>
       <div className="board-grid">
         {tablero.map((box) => (
-          <div key={box.number} className="square">
+          <div
+            key={box.number}
+            className={`square ${box.ciudadIconica ? `ciudad-${box.number}` : `type-${box.type}`}`}
+          >
             <div className="square-number">{box.number}</div>
             <div className="players-in-square">
               {box.players.map((name, idx) => (

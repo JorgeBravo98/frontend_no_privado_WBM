@@ -68,11 +68,56 @@
   font-size: 1.05rem;
   color: #222b45;
   user-select: none;
-  background: transparent;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   transition: none;
   border-radius: 8px;
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 71, 171, 0.03);
 }
 
+.square-number {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 2px #000;
+}
 
+.players-in-square {
+  position: absolute;
+  bottom: 2px;
+  left: 5px;
+  font-size: 0.65rem;
+  font-weight: bold;
+  color: yellow;
+  text-shadow: 0 0 2px #000;
+}
+
+.ciudad-1  { background-image: url('../assets/ciudades/Arica.png'); }
+.ciudad-11 { background-image: url('../assets/ciudades/Iquique.png'); }
+.ciudad-21 { background-image: url('../assets/ciudades/Atacama.png'); }
+.ciudad-31 { background-image: url('../assets/ciudades/Valparaiso.png'); }
+.ciudad-41 { background-image: url('../assets/ciudades/Santiago.png'); }
+.ciudad-51 { background-image: url('../assets/ciudades/Talca.png'); }
+.ciudad-61 { background-image: url('../assets/ciudades/Concepcion.png'); }
+.ciudad-71 { background-image: url('../assets/ciudades/Valdivia.png'); }
+.ciudad-81 { background-image: url('../assets/ciudades/PuertoVaras.png'); }
+.ciudad-91 { background-image: url('../assets/ciudades/TorresdelPaine.png'); }
+
+
+.type-normal {
+  background-image: url('../assets/Calle.png');
+}
+.type-carta {
+  background-image: url('../assets/Carta.png');
+}
+.type-funicular {
+  background-image: url('../assets/Fonicular.png'); /* Verifica si el nombre es correcto */
+}
+.type-estancamiento {
+  background-image: url('../assets/Taco.png');
+}
