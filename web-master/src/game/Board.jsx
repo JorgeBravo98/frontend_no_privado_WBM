@@ -16,7 +16,7 @@ export default function Board() {
           headers: { Authorization: `Bearer ${token}` }
         });
 
-        if (Array.isArray(response.data) && response.data.length >= 100) {
+        if (Array.isArray(response.data) && response.data.length >= 49) {
           setTablero(response.data);
           setLoading(false);
         } else {
