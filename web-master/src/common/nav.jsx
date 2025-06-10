@@ -23,12 +23,25 @@ function Navbar() {
   // Cargar datos del usuario (ajusta según tu backend/localStorage)
   useEffect(() => {
     if (isLoggedIn) {
-      // Ejemplo: obtener usuario desde localStorage o API
-      const userData = JSON.parse(localStorage.getItem("user") || "{}");
-      setUser({
-        name: userData.name || "Usuario",
-        mail: userData.mail || "correo@ejemplo.com"
-      });
+      fetch(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      })
+        .then(res => {
+          if (!res.ok) throw new Error("No se pudo obtener el usuario");
+          return res.json();
+        })
+        .then(userData => {
+          setUser({
+            name: userData.name || "Usuario",
+            mail: userData.mail || "correo@ejemplo.com"
+          });
+        })
+        .catch(err => {
+          console.error("Error al obtener usuario:", err);
+          handleLogout(); // Desloguear si hay error por seguridad
+        });
     }
   }, [isLoggedIn]);
 
