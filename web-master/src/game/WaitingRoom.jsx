@@ -11,7 +11,7 @@ export default function WaitingRoom() {
 
   const currentUser = (() => {
     try {
-      return JSON.parse(atob(token.split('.')[1]));
+      return JSON.parse(atob(token.split(".")[1]));
     } catch {
       return null;
     }
@@ -56,9 +56,7 @@ export default function WaitingRoom() {
         intentos++;
       }
 
-      alert("No se pudo cargar el tablero. Intenta nuevamente.");
     } catch (error) {
-      alert("No se pudo iniciar la partida. ¿Están todos listos?");
     }
   };
 

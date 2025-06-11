@@ -1,7 +1,7 @@
-import './App.css';
-import './nav.css';
-import { useEffect, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import "./App.css";
+import "./nav.css";
+import { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
@@ -20,7 +20,6 @@ function Navbar() {
     return () => window.removeEventListener("authChange", handleAuthChange);
   }, []);
 
-  // Cargar datos del usuario (ajusta según tu backend/localStorage)
   useEffect(() => {
     if (isLoggedIn) {
       fetch(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {
@@ -38,14 +37,12 @@ function Navbar() {
             mail: userData.mail || "correo@ejemplo.com"
           });
         })
-        .catch(err => {
-          console.error("Error al obtener usuario:", err);
-          handleLogout(); // Desloguear si hay error por seguridad
+        .catch(() => {
+          handleLogout();
         });
     }
   }, [isLoggedIn]);
 
-  // Cerrar el menú si se hace click fuera
   useEffect(() => {
     function handleClickOutside(event) {
       if (menuRef.current && !menuRef.current.contains(event.target)) {

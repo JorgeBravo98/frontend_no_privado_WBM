@@ -4,7 +4,6 @@ import "./estilos.css";
 import "../common/App.css";
 import { Link, useNavigate } from "react-router-dom";
 
-
 import avatar1 from "./avatar1.png";
 import avatar2 from "./avatar2.png";
 import avatar3 from "./avatar3.png";
@@ -20,7 +19,7 @@ export default function Perfil() {
   const [errorEmail, setErrorEmail] = useState("");
   const [name, setName] = useState("");
   const [mensaje, setMensaje] = useState("");
-  const [tipoMensaje, setTipoMensaje] = useState(""); 
+  const [tipoMensaje, setTipoMensaje] = useState("");
   const avatares = [avatar1, avatar2, avatar3, avatar4];
 
   const validarEmail = (email) => {
@@ -53,42 +52,41 @@ export default function Perfil() {
     let valid = true;
 
     if (!validarEmail(email)) {
-        setErrorEmail("El correo debe contener '@'");
-        valid = false;
+      setErrorEmail("El correo debe contener '@'");
+      valid = false;
     } else {
-        setErrorEmail("");
+      setErrorEmail("");
     }
 
     if (password !== confirmPassword) {
-        setErrorPass("Las contraseñas no coinciden");
-        valid = false;
+      setErrorPass("Las contraseñas no coinciden");
+      valid = false;
     } else {
-        setErrorPass("");
+      setErrorPass("");
     }
 
     if (!valid) return;
 
     try {
-        const token = localStorage.getItem("token");
-        const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/auth/me`, {
+      const token = localStorage.getItem("token");
+      const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/auth/me`, {
         name,
         mail: email,
         password: password || undefined,
         avatar: avatarSeleccionado || null,
-        }, {
+      }, {
         headers: { Authorization: `Bearer ${token}` }
-        });
+      });
 
-        setTipoMensaje("exito");
-        setMensaje("¡Datos actualizados con éxito!");
-        window.dispatchEvent(new Event("authChange"));
-        setTimeout(() => navigate("/"), 1500);
+      setTipoMensaje("exito");
+      setMensaje("¡Datos actualizados con éxito!");
+      window.dispatchEvent(new Event("authChange"));
+      setTimeout(() => navigate("/"), 1500);
     } catch (error) {
-        setTipoMensaje("error");
-        setMensaje("Error al actualizar usuario.");
+      setTipoMensaje("error");
+      setMensaje("Error al actualizar usuario.");
     }
-};
-
+  };
 
   return (
     <div className="registro-container">

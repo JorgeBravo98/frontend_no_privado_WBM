@@ -1,4 +1,4 @@
-import './instructions.css'
+import "./instructions.css";
 
 export default function Instructions() {
   return (
