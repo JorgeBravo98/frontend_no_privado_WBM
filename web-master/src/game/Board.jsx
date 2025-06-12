@@ -89,7 +89,7 @@ export default function Board() {
 
       {currentUser?.id === turnoUserId && (
         <button className="dice-button" onClick={tirarDado}>
-          🎲 Tirar dado
+          🎲 Lanzar dado
         </button>
       )}
 

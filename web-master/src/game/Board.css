@@ -28,6 +28,14 @@
   font-family: var(--font-sans);
 }
 
+.board-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  gap: 40px;               
+  margin-top: 20px;
+}
+
 .board h1 {
   font-size: 2.3rem;
   color: var(--color-primary);
@@ -50,8 +58,8 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(7, 1fr);
-  width: 520px;
-  height: 520px;
+  width: 600px;
+  height: 600px;
   border: 3px solid var(--color-border);
   background: linear-gradient(120deg, #f0f4ff 60%, #e3ecff 100%);
   box-shadow: 0 8px 32px rgba(0, 71, 171, 0.10);
@@ -81,9 +89,9 @@
 
 .square-number {
   position: absolute;
-  top: 45px;
-  left: 45px;
-  font-size: 0.75rem;
+  top: 10px;
+  left: 31px;
+  font-size: 1rem;
   font-weight: bold;
   color: black;
 }
@@ -113,7 +121,6 @@
 }
 
 
-/* Iconos de ciudades (ajusta números según tus casillas ciudadIconica) */
 .ciudad-1  { background-image: url('../assets/ciudades/Arica.png'); }
 .ciudad-9  { background-image: url('../assets/ciudades/Atacama.png'); }
 .ciudad-17 { background-image: url('../assets/ciudades/Santiago.png'); }
@@ -122,7 +129,7 @@
 .ciudad-41 { background-image: url('../assets/ciudades/PuertoVaras.png'); }
 .ciudad-49 { background-image: url('../assets/ciudades/TorresdelPaine.png'); }
 
-/* Tipos de casilla */
+
 .type-normal {
   background-image: url('../assets/Calle.png');
 }
@@ -136,31 +143,43 @@
   background-image: url('../assets/Taco.png');
 }
 
-/* Avatares locales */
+
 .avatar-avatar1 { background-image: url('../profile/avatar1.png'); }
 .avatar-avatar2 { background-image: url('../profile/avatar2.png'); }
 .avatar-avatar3 { background-image: url('../profile/avatar3.png'); }
 .avatar-avatar4 { background-image: url('../profile/avatar4.png'); }
 
-/* Avatar genérico si es externo */
+
 .avatar-url {
   background-image: url('../profile/avatar1.png');
 }
 
-/* Colores únicos por jugador (hasta 4) */
-.player-color-0 { border-color: #FF4136; }  /* rojo */
-.player-color-1 { border-color: #2ECC40; }  /* verde */
-.player-color-2 { border-color: #0074D9; }  /* azul */
-.player-color-3 { border-color: #FF851B; }  /* naranjo */
+.player-color-0 { border-color: #FF4136; }  
+.player-color-1 { border-color: #2ECC40; }  
+.player-color-2 { border-color: #0074D9; } 
+.player-color-3 { border-color: #FF851B; }  
+
 
 .dice-button {
-  margin-top: 12px;
-  padding: 10px 18px;
-  background-color: #0074d9;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-weight: bold;
+  width: 150px;
+  height: 80px;
+  background-color: white;
+  border: 4px solid #0074d9;
+  border-radius: 20px;
   cursor: pointer;
-  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.23rem; 
+  color: #0074d9;
+  font-weight: bold;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  user-select: none;
+  transition: background-color 0.3s ease;
 }
+
+
+
+
+
+
