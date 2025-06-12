@@ -3,11 +3,10 @@ import axios from "axios";
 import "./estilos.css";
 import "../common/App.css";
 import { Link, useNavigate } from "react-router-dom";
-
-import avatar1 from "./avatar1.png";
-import avatar2 from "./avatar2.png";
-import avatar3 from "./avatar3.png";
-import avatar4 from "./avatar4.png";
+import avatar1 from "../assets/avatar/avatar1.png";
+import avatar2 from "../assets/avatar/avatar2.png";
+import avatar3 from "../assets/avatar/avatar3.png";
+import avatar4 from "../assets/avatar/avatar4.png";
 
 export default function Perfil() {
   const navigate = useNavigate();
