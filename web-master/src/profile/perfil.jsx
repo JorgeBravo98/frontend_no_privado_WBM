@@ -1,8 +1,9 @@
+/* global setTimeout */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./estilos.css";
 import "../common/App.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import avatar1 from "./avatar1.png";
 import avatar2 from "./avatar2.png";
@@ -38,8 +39,7 @@ export default function Perfil() {
         setName(user.name);
         setEmail(user.mail);
         setAvatarSeleccionado(user.avatar);
-      } catch (error) {
-        console.error("Error al cargar usuario", error);
+      } catch {
       }
     };
 
@@ -69,7 +69,7 @@ export default function Perfil() {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/auth/me`, {
+      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/auth/me`, {
         name,
         mail: email,
         password: password || undefined,
@@ -82,7 +82,7 @@ export default function Perfil() {
       setMensaje("¡Datos actualizados con éxito!");
       window.dispatchEvent(new Event("authChange"));
       setTimeout(() => navigate("/"), 1500);
-    } catch (error) {
+    } catch {
       setTipoMensaje("error");
       setMensaje("Error al actualizar usuario.");
     }

@@ -29,7 +29,7 @@ export default function CrearPartida() {
 
       const gameId = response.data.game.id;
       navigate(`/waiting-room/${gameId}`);
-    } catch (error) {
+    } catch {
       setMensaje("Error al crear la partida.");
     }
   };

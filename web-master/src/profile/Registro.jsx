@@ -1,8 +1,9 @@
+/* global setTimeout */
 import React, { useState } from "react";
 import axios from "axios";
 import "./estilos.css";
 import "../common/App.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import avatar1 from "./avatar1.png";
 import avatar2 from "./avatar2.png";

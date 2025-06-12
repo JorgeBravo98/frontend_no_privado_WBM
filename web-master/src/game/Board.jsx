@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./Board.css";
+/* global atob, setTimeout, setInterval, clearInterval */
 
 export default function Board() {
   const { id } = useParams();
@@ -9,7 +10,7 @@ export default function Board() {
 
   const currentUser = (() => {
     try {
-      return JSON.parse(atob(token.split('.')[1]));
+      return JSON.parse(atob(token.split(".")[1]));
     } catch {
       return null;
     }
@@ -20,7 +21,6 @@ export default function Board() {
   const [turnoUserId, setTurnoUserId] = useState(null);
   const [dado, setDado] = useState(null);
   const [mensaje, setMensaje] = useState("");
-
 
   const fetchBoard = async () => {
     try {
@@ -34,8 +34,7 @@ export default function Board() {
       } else {
         setTimeout(fetchBoard, 1000);
       }
-    } catch (error) {
-      console.error("Error al cargar el tablero:", error);
+    } catch {
     }
   };
 
@@ -45,8 +44,7 @@ export default function Board() {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTurnoUserId(resGame.data.turno_user_id);
-    } catch (error) {
-      console.error("Error al obtener el turno:", error);
+    } catch {
     }
   };
 
@@ -57,10 +55,9 @@ export default function Board() {
       });
       setDado(res.data.dado);
       setMensaje(res.data.message);
-      fetchBoard(); // actualizar tablero
-      fetchTurno(); // actualizar turno
-    } catch (error) {
-      alert("❌ No se pudo mover el jugador. Verifica si es tu turno.");
+      fetchBoard();
+      fetchTurno();
+    } catch {
     }
   };
 
@@ -104,10 +101,10 @@ export default function Board() {
             <div className="square-number">{box.number}</div>
             <div className="players-in-square">
               {box.players.map((player, idx) => {
-                const isExternal = player.avatar?.startsWith('http');
+                const isExternal = player.avatar?.startsWith("http");
                 const avatarName = isExternal
-                  ? 'url'
-                  : player.avatar?.split('/').pop()?.replace('.png', '') || 'avatar1';
+                  ? "url"
+                  : player.avatar?.split("/").pop()?.replace(".png", "") || "avatar1";
 
                 return (
                   <div

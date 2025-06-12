@@ -27,7 +27,7 @@ export default function PartidasExistentes() {
           }
         );
         setPartidas(response.data.games); // ajusta si el backend usa otro nombre
-      } catch (error) {
+      } catch {
         setMensaje("Error al cargar las partidas.");
       }
     };
