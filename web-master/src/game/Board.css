@@ -137,14 +137,14 @@
 }
 
 /* Avatares locales */
-.avatar-avatar1 { background-image: url('../profile/avatar1.png'); }
-.avatar-avatar2 { background-image: url('../profile/avatar2.png'); }
-.avatar-avatar3 { background-image: url('../profile/avatar3.png'); }
-.avatar-avatar4 { background-image: url('../profile/avatar4.png'); }
+.avatar-avatar1 { background-image: url('../assets/avatar/avatar1.png'); }
+.avatar-avatar2 { background-image: url('../assets/avatar/avatar2.png'); }
+.avatar-avatar3 { background-image: url('../assets/avatar/avatar3.png'); }
+.avatar-avatar4 { background-image: url('../assets/avatar/avatar4.png'); }
 
 /* Avatar genérico si es externo */
 .avatar-url {
-  background-image: url('../profile/avatar1.png');
+  background-image: url('../assets/avatar/avatar1.png');
 }
 
 /* Colores únicos por jugador (hasta 4) */
