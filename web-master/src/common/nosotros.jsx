@@ -21,7 +21,7 @@ export default function Nosotros() {
         </div>
         <div className="nosotros-miembro">
           <img
-            src="https://randomuser.me/api/portraits/men/45.jpg"
+            src={new URL('../assets/Jorge.jpg', import.meta.url).href}
             alt="Miembro 2"
             className="nosotros-foto"
           />
@@ -30,7 +30,7 @@ export default function Nosotros() {
         </div>
         <div className="nosotros-miembro">
           <img
-            src={new URL('./balta.jpeg', import.meta.url).href}
+            src={new URL('../assets/balta.jpeg', import.meta.url).href}
             alt="Balta"
             className="nosotros-foto"
           />

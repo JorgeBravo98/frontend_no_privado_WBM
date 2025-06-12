@@ -61,17 +61,20 @@ opacity: 1;
 }
 
 h1 {
-color: var(--color-primary);
-font-size: 3.5rem;
-font-weight: 800;
-line-height: 1.1;
-margin-bottom: 1.5rem;
-text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-background: linear-gradient(90deg, var(--color-primary), #577adb);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-position: relative;
-z-index: 1;
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #003580 0%, #d52b1e 50%, #003580 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  z-index: 1;
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: 2px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
 }
 
 .subtitle {
