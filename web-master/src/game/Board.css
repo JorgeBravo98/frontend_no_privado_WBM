@@ -61,6 +61,7 @@
 }
 
 .square {
+  position: relative;
   border: 1px solid #dbeafe;
   display: flex;
   justify-content: center;
@@ -75,40 +76,53 @@
   border-radius: 8px;
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 71, 171, 0.03);
+  overflow: hidden;
 }
 
 .square-number {
   position: absolute;
-  top: 3px;
-  left: 5px;
+  top: 45px;
+  left: 45px;
   font-size: 0.75rem;
   font-weight: bold;
-  color: white;
-  text-shadow: 0 0 2px #000;
+  color: black;
 }
 
 .players-in-square {
   position: absolute;
-  bottom: 2px;
-  left: 5px;
-  font-size: 0.65rem;
-  font-weight: bold;
-  color: yellow;
-  text-shadow: 0 0 2px #000;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  max-width: calc(100% - 8px);
 }
 
+.player-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-right: 2px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Iconos de ciudades (ajusta números según tus casillas ciudadIconica) */
 .ciudad-1  { background-image: url('../assets/ciudades/Arica.png'); }
-.ciudad-7 { background-image: url('../assets/ciudades/Iquique.png'); }
-.ciudad-10 { background-image: url('../assets/ciudades/Atacama.png'); }
-.ciudad-14 { background-image: url('../assets/ciudades/Valparaiso.png'); }
-.ciudad-21 { background-image: url('../assets/ciudades/Santiago.png'); }
-.ciudad-28 { background-image: url('../assets/ciudades/Talca.png'); }
-.ciudad-35 { background-image: url('../assets/ciudades/Concepcion.png'); }
-.ciudad-42 { background-image: url('../assets/ciudades/Valdivia.png'); }
-.ciudad-46 { background-image: url('../assets/ciudades/PuertoVaras.png'); }
+.ciudad-9  { background-image: url('../assets/ciudades/Atacama.png'); }
+.ciudad-17 { background-image: url('../assets/ciudades/Santiago.png'); }
+.ciudad-25 { background-image: url('../assets/ciudades/Concepcion.png'); }
+.ciudad-33 { background-image: url('../assets/ciudades/Valdivia.png'); }
+.ciudad-41 { background-image: url('../assets/ciudades/PuertoVaras.png'); }
 .ciudad-49 { background-image: url('../assets/ciudades/TorresdelPaine.png'); }
 
-
+/* Tipos de casilla */
 .type-normal {
   background-image: url('../assets/Calle.png');
 }
@@ -116,8 +130,37 @@
   background-image: url('../assets/Carta.png');
 }
 .type-funicular {
-  background-image: url('../assets/Fonicular.png'); /* Verifica si el nombre es correcto */
+  background-image: url('../assets/Fonicular.png');
 }
 .type-estancamiento {
   background-image: url('../assets/Taco.png');
+}
+
+/* Avatares locales */
+.avatar-avatar1 { background-image: url('../profile/avatar1.png'); }
+.avatar-avatar2 { background-image: url('../profile/avatar2.png'); }
+.avatar-avatar3 { background-image: url('../profile/avatar3.png'); }
+.avatar-avatar4 { background-image: url('../profile/avatar4.png'); }
+
+/* Avatar genérico si es externo */
+.avatar-url {
+  background-image: url('../profile/avatar1.png');
+}
+
+/* Colores únicos por jugador (hasta 4) */
+.player-color-0 { border-color: #FF4136; }  /* rojo */
+.player-color-1 { border-color: #2ECC40; }  /* verde */
+.player-color-2 { border-color: #0074D9; }  /* azul */
+.player-color-3 { border-color: #FF851B; }  /* naranjo */
+
+.dice-button {
+  margin-top: 12px;
+  padding: 10px 18px;
+  background-color: #0074d9;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
 }

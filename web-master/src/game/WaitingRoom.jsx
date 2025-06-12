@@ -1,3 +1,4 @@
+/* global atob, setTimeout, setInterval, clearInterval */
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -29,8 +30,7 @@ export default function WaitingRoom() {
       if (game.en_progreso) {
         navigate(`/board/${id}`);
       }
-    } catch (error) {
-      console.error("Error al obtener la partida:", error);
+    } catch {
     }
   };
 
@@ -55,8 +55,7 @@ export default function WaitingRoom() {
         await new Promise(resolve => setTimeout(resolve, 300));
         intentos++;
       }
-
-    } catch (error) {
+    } catch  {
     }
   };
 
