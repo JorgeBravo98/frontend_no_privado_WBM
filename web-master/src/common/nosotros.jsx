@@ -1,20 +1,18 @@
-import "./App.css";
-import "./nosotros.css";
-import nicoImg from "../assets/nico.jpg";
-import baltaImg from "./balta.jpeg";
+import './App.css';
+import './nosotros.css';
 
 export default function Nosotros() {
   return (
     <div className="nosotros-container">
       <h1 className="nosotros-titulo">Sobre Nosotros</h1>
       <p className="nosotros-descripcion">
-        Somos el equipo <b>WebMasters</b>, grupo de estudiantes de Ingenieria, apasionados por la tecnología y la entretención.
-        Creamos esta plataforma para generar una instancia entretetenida en la cual puedes enfrentarte a tu familia o amigos con la mejor temática, desde cualquier lugar de nuestro lindo país.
+        Somos el equipo <b>WebMasters</b>, grupo de estudiantes de Ingenieria, apasionados por la tecnología y la entretención. 
+        Creamos esta plataforma para generar una instancia entretetenida en la cual puedes enfrentarte a tu familia o amigos con la mejor temática, desde cualquier lugar de nuestro lindo país.  
       </p>
       <div className="nosotros-equipo">
         <div className="nosotros-miembro">
           <img
-            src={nicoImg}
+            src={new URL('../assets/nico.jpg', import.meta.url).href}
             alt="Nicolás Vial"
             className="nosotros-foto"
           />
@@ -23,7 +21,7 @@ export default function Nosotros() {
         </div>
         <div className="nosotros-miembro">
           <img
-            src="https://randomuser.me/api/portraits/men/45.jpg"
+            src={new URL('../assets/Jorge.jpg', import.meta.url).href}
             alt="Miembro 2"
             className="nosotros-foto"
           />
@@ -32,7 +30,7 @@ export default function Nosotros() {
         </div>
         <div className="nosotros-miembro">
           <img
-            src={baltaImg}
+            src={new URL('../assets/balta.jpeg', import.meta.url).href}
             alt="Balta"
             className="nosotros-foto"
           />
