@@ -1,6 +1,6 @@
-import './App.css';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; 
+import "./App.css";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

@@ -1,6 +1,7 @@
 // eslint.config.js
 import { builtinModules } from "module";
 import parser from "@babel/eslint-parser";
+import reactPlugin from "eslint-plugin-react";
 
 export default [
   {
@@ -8,12 +9,14 @@ export default [
   },
   {
     files: ["**/*.js?(x)"],
-
     languageOptions: {
       parser,
       parserOptions: {
         ecmaVersion: 2021,
         sourceType: "module",
+        ecmaFeatures: {
+          jsx: true,
+        },
         requireConfigFile: false,
         babelOptions: {
           plugins: ["@babel/plugin-syntax-jsx"],
@@ -24,12 +27,24 @@ export default [
           acc[mod] = "readonly";
           return acc;
         }, {}),
-        browser: true,
-        node: true,
+        document: "readonly",
+        window: "readonly",
+        localStorage: "readonly",
+        fetch: "readonly",
+        Event: "readonly",
       },
     },
-
+    plugins: {
+      react: reactPlugin,
+    },
+    settings: {
+      react: {
+        version: "detect",
+      },
+    },
     rules: {
+      "react/jsx-uses-react": "error",
+      "react/jsx-uses-vars": "error",
       "no-undef": "error",
       "quotes": ["warn", "double"],
       "no-console": "error",

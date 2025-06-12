@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "../common/App.css"; 
+import "../common/App.css";
 import { useNavigate } from "react-router-dom";
 
 export default function PartidasExistentes() {

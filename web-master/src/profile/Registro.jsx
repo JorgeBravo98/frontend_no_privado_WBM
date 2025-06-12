@@ -4,7 +4,6 @@ import "./estilos.css";
 import "../common/App.css";
 import { Link, useNavigate } from "react-router-dom";
 
-
 import avatar1 from "./avatar1.png";
 import avatar2 from "./avatar2.png";
 import avatar3 from "./avatar3.png";
@@ -55,7 +54,7 @@ export default function Registro() {
         mail: email,
         password,
         avatar: avatarSeleccionado || null,
-        date: null, 
+        date: null,
         type: null
       });
 
