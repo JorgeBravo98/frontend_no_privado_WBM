@@ -115,7 +115,6 @@
 
 /* Iconos de ciudades (ajusta números según tus casillas ciudadIconica) */
 .ciudad-1  { background-image: url('../assets/ciudades/Arica.png'); }
-
 .ciudad-9  { background-image: url('../assets/ciudades/Atacama.png'); }
 .ciudad-17 { background-image: url('../assets/ciudades/Santiago.png'); }
 .ciudad-25 { background-image: url('../assets/ciudades/Concepcion.png'); }

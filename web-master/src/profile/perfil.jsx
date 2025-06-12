@@ -70,7 +70,7 @@ export default function Perfil() {
 
     try {
         const token = localStorage.getItem("token");
-        const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/users/me`, {
+        const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/auth/me`, {
         name,
         mail: email,
         password: password || undefined,
