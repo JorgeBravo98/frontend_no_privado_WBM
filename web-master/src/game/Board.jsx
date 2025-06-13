@@ -1,3 +1,4 @@
+/* global atob, setTimeout, setInterval, clearInterval */
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -19,7 +20,6 @@ export default function Board() {
   const [loading, setLoading] = useState(true);
   const [turnoUserId, setTurnoUserId] = useState(null);
   const [dado, setDado] = useState(null);
-  const [mensaje, setMensaje] = useState("");
   const [jugadores, setJugadores] = useState([]);
   const [animandoDado, setAnimandoDado] = useState(false);
 
@@ -35,8 +35,7 @@ export default function Board() {
       } else {
         setTimeout(fetchBoard, 1000);
       }
-    } catch (error) {
-      console.error("Error al cargar el tablero:", error);
+    } catch {
     }
   };
 
@@ -47,8 +46,7 @@ export default function Board() {
       });
       setTurnoUserId(resGame.data.turno_user_id);
       setJugadores(resGame.data.jugadores || []);
-    } catch (error) {
-      console.error("Error al obtener el juego:", error);
+    } catch {
     }
   };
 
@@ -59,11 +57,10 @@ export default function Board() {
         headers: { Authorization: `Bearer ${token}` }
       });
       setDado(res.data.dado);
-      setMensaje(res.data.message);
       fetchBoard();
       fetchGame();
-    } catch (error) {
-      const mensajeDiv = document.getElementById('mensaje');
+    } catch {
+      const mensajeDiv = document.getElementById("mensaje");
       if (mensajeDiv) {
         mensajeDiv.textContent = "❌ No se pudo mover el jugador. Verifica si es tu turno.";
       }

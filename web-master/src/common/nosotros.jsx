@@ -1,5 +1,8 @@
 import "./App.css";
 import "./nosotros.css";
+import nicoImg from "../assets/nico.jpg";
+import jorgeImg from "../assets/Jorge.jpg";
+import baltaImg from "../assets/balta.jpeg";
 
 export default function Nosotros() {
   return (
@@ -12,7 +15,7 @@ export default function Nosotros() {
       <div className="nosotros-equipo">
         <div className="nosotros-miembro">
           <img
-            src={new URL("../assets/nico.jpg", import.meta.url).href}
+            src={nicoImg}
             alt="Nicolás Vial"
             className="nosotros-foto"
           />
@@ -21,7 +24,7 @@ export default function Nosotros() {
         </div>
         <div className="nosotros-miembro">
           <img
-            src={new URL("../assets/Jorge.jpg", import.meta.url).href}
+            src={jorgeImg}
             alt="Miembro 2"
             className="nosotros-foto"
           />
@@ -30,7 +33,7 @@ export default function Nosotros() {
         </div>
         <div className="nosotros-miembro">
           <img
-            src={new URL("../assets/balta.jpeg", import.meta.url).href}
+            src={baltaImg}
             alt="Balta"
             className="nosotros-foto"
           />
