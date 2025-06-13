@@ -19,14 +19,14 @@ export default function PartidasExistentes() {
     const fetchPartidas = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/games/user/my`, // asegúrate que esta ruta exista en tu backend
+          `${import.meta.env.VITE_BACKEND_URL}/games/user/my`, 
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
-        setPartidas(response.data.games); // ajusta si el backend usa otro nombre
+        setPartidas(response.data.games); 
       } catch {
         setMensaje("Error al cargar las partidas.");
       }

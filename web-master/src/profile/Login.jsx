@@ -1,4 +1,4 @@
-/* global setTimeout */
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./estilos.css";
@@ -11,7 +11,7 @@ export default function Login() {
   const [errorEmail, setErrorEmail] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [mensaje, setMensaje] = useState("");
-  const [tipoMensaje, setTipoMensaje] = useState(""); // "exito" o "error"
+  const [tipoMensaje, setTipoMensaje] = useState(""); 
 
   const navigate = useNavigate();
 
@@ -20,7 +20,7 @@ export default function Login() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      navigate("/"); // Si ya hay sesión, redirige a inicio
+      navigate("/"); 
     }
   }, []);
 
@@ -60,7 +60,7 @@ export default function Login() {
       setMensaje("¡Inicio de sesión exitoso!");
       localStorage.setItem("token", token);
       window.dispatchEvent(new Event("authChange"));
-      setTimeout(() => navigate("/"), 1200); // Redirige tras 1.2s
+      setTimeout(() => navigate("/"), 1200); 
 
     } catch (error) {
       setTipoMensaje("error");

@@ -1,4 +1,4 @@
-/* global atob, setTimeout, setInterval, clearInterval */
+
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";

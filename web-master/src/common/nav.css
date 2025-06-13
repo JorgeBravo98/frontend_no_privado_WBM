@@ -46,7 +46,7 @@
   text-decoration: none;
 }
 
-/* botón personalizado para cerrar sesión */
+
 .navbar-link {
   all: unset;
   display: inline-block;
@@ -62,7 +62,7 @@
   text-decoration: none;
 }
 
-/* Hover para ambos */
+
 .navbar a:hover,
 .navbar-link:hover {
   background: #e3ecff;

@@ -1,4 +1,4 @@
-/* global setTimeout */
+
 import React, { useState } from "react";
 import axios from "axios";
 import "./estilos.css";
@@ -19,7 +19,7 @@ export default function Registro() {
   const [errorEmail, setErrorEmail] = useState("");
   const [name, setName] = useState("");
   const [mensaje, setMensaje] = useState("");
-  const [tipoMensaje, setTipoMensaje] = useState(""); // "exito" o "error"
+  const [tipoMensaje, setTipoMensaje] = useState(""); 
 
   const avatares = [avatar1, avatar2, avatar3, avatar4];
 
@@ -63,12 +63,12 @@ export default function Registro() {
       window.dispatchEvent(new Event("authChange"));
       setTipoMensaje("exito");
       setMensaje("¡Registro exitoso! Bienvenido a 100 Pasos por Chile.");
-      setTimeout(() => navigate("/"), 1500); // Redirige después de 1.5s
+      setTimeout(() => navigate("/"), 1500); 
 
     } catch (error) {
       setTipoMensaje("error");
       if (error.response && error.response.data && error.response.data.error) {
-        setMensaje("Error: " + error.response.data.error); // Puedes personalizar aún más este mensaje
+        setMensaje("Error: " + error.response.data.error); 
       } else {
         setMensaje("Error de conexión con el servidor");
       }

@@ -56,7 +56,7 @@ body::before {
   padding: 1.3rem 1.5rem;
   border-radius: 16px 16px 0 0;
   margin: 6rem auto 0;
-  color: #ffffff; /* Texto blanco 100% opaco */
+  color: #ffffff; 
   box-shadow: 0 6px 20px var(--shadow-color);
   max-width: 800px;
 }
@@ -64,13 +64,12 @@ body::before {
 .instructions-title {
   font-size: 2.5rem;
   margin: 0;
-  color: #0033a0; /* Azul oscuro clásico */
+  color: #0033a0; 
   font-weight: 900;
-  text-shadow: 1px 1px 3px rgba(175, 19, 19, 0.7); /* sombra roja para efecto Chile */
+  text-shadow: 1px 1px 3px rgba(175, 19, 19, 0.7); 
   background: linear-gradient(90deg, #c0ceec 0%, #f16c6c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* Opcional para que no se divida en varias líneas */
   white-space: nowrap;
   letter-spacing: 1.5px;
 }
