@@ -1,0 +1,24 @@
+
+.showboard-container {
+  text-align: center;
+  padding: 2rem;
+  background-color: white; 
+  display: inline-block;
+  border-radius: 12px;
+  margin-top: 40px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.showboard-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+  image-rendering: auto; 
+  backface-visibility: hidden; 
+  -webkit-transform: translateZ(0); 
+}
+
