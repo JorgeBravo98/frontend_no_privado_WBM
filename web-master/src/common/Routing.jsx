@@ -11,6 +11,7 @@ import UnirsePartida from "../game/UnirsePartida";
 import PartidasExistentes from "../game/PartidasExistentes";
 import Perfil from "../profile/perfil";
 import Navbar from "./nav";
+import ShowBoard from "./showBoard";
 
 function Routing() {
   return (
@@ -28,6 +29,7 @@ function Routing() {
         <Route path='/unirse' element={<UnirsePartida />} />
         <Route path='/mis-partidas' element={<PartidasExistentes />} />
         <Route path='/perfil' element={<Perfil />} />
+        <Route path='/cboard' element={<ShowBoard />} />
       </Routes>
     </BrowserRouter>
   );

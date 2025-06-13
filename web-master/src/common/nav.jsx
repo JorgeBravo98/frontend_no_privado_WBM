@@ -72,6 +72,10 @@ function Navbar() {
         <a href="/" className="navbar-title"> 🏠 100 Pasos por Chile</a>
       </div>
       <div className="navbar-right">
+        <>
+          <a href="/nosotros">👨‍👩‍👧‍👦 Nosotros</a>
+          <a href="/instructions">📖 Instrucciones</a>
+        </>
         {!isLoggedIn ? (
           <>
             <a href="/login">👤 Inicio Sesión</a>

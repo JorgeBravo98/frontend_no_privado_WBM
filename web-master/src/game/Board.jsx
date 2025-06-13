@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import './Board.css';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import "./Board.css";
 
 export default function Board() {
   const { id } = useParams();
@@ -9,7 +9,7 @@ export default function Board() {
 
   const currentUser = (() => {
     try {
-      return JSON.parse(atob(token.split('.')[1]));
+      return JSON.parse(atob(token.split(".")[1]));
     } catch {
       return null;
     }
@@ -63,7 +63,10 @@ export default function Board() {
       fetchBoard();
       fetchGame();
     } catch (error) {
-      alert("❌ No se pudo mover el jugador. Verifica si es tu turno.");
+      const mensajeDiv = document.getElementById('mensaje');
+      if (mensajeDiv) {
+        mensajeDiv.textContent = "❌ No se pudo mover el jugador. Verifica si es tu turno.";
+      }
     }
     setTimeout(() => setAnimandoDado(false), 1500);
   };
@@ -124,7 +127,6 @@ export default function Board() {
           {dado && <p>🎯 Sacaste un {dado}</p>}
         </div>
 
-
         {/* Tablero central */}
         <div className="board-grid">
           {tablero.map((box) => (
@@ -135,10 +137,10 @@ export default function Board() {
               <div className="square-number">{box.number}</div>
               <div className="players-in-square">
                 {box.players.map((player, idx) => {
-                  const isExternal = player.avatar?.startsWith('http');
+                  const isExternal = player.avatar?.startsWith("http");
                   const avatarName = isExternal
-                    ? 'url'
-                    : player.avatar?.split('/').pop()?.replace('.png', '') || 'avatar1';
+                    ? "url"
+                    : player.avatar?.split("/").pop()?.replace(".png", "") || "avatar1";
 
                   return (
                     <div

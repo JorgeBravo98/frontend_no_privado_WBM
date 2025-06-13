@@ -22,7 +22,7 @@ function App() {
       <div className="card">
         <Link to='/nosotros'>👤 Sobre nosotros</Link>
         <Link to='/instructions'>📖 Instrucciones</Link>
-        <Link to='/board'>🎲 Tablero de Juego</Link>
+        <Link to='/cboard'>🎲 Tablero de Juego</Link>
 
         {isLoggedIn ? (
           <>
