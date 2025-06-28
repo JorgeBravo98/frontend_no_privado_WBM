@@ -14,6 +14,16 @@ import Navbar from "./nav";
 import ShowBoard from "./showBoard";
 import PrivateRoute from "./PrivateRoute";
 
+function NotFound() {
+  return (
+    <div className="not-found-container">
+      <h1>404 - Página no encontrada</h1>
+      <p>La ruta que buscaste no existe.</p>
+    </div>
+  );
+}
+
+
 function Routing() {
   return (
     <BrowserRouter>
@@ -85,7 +95,7 @@ function Routing() {
         />
 
         {/* RUTA 404 */}
-        <Route path="*" element={<p>404 - Página no encontrada</p>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
