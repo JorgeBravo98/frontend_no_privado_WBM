@@ -12,24 +12,80 @@ import PartidasExistentes from "../game/PartidasExistentes";
 import Perfil from "../profile/perfil";
 import Navbar from "./nav";
 import ShowBoard from "./showBoard";
+import PrivateRoute from "./PrivateRoute";
 
 function Routing() {
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
+        {/* RUTAS PÚBLICAS */}
         <Route path='/' element={<App />} />
         <Route path='/instructions' element={<Instructions />} />
         <Route path='/nosotros' element={<Nosotros />} />
         <Route path='/registro' element={<Registro />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/crear' element={<CrearPartida />} />
-        <Route path='/waiting-room/:id' element={<WaitingRoom />} />
-        <Route path='/board/:id' element={<Board />} />
-        <Route path='/unirse' element={<UnirsePartida />} />
-        <Route path='/mis-partidas' element={<PartidasExistentes />} />
-        <Route path='/perfil' element={<Perfil />} />
-        <Route path='/cboard' element={<ShowBoard />} />
+
+        {/* RUTAS PROTEGIDAS */}
+        <Route
+          path='/crear'
+          element={
+            <PrivateRoute>
+              <CrearPartida />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/waiting-room/:id'
+          element={
+            <PrivateRoute>
+              <WaitingRoom />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/board/:id'
+          element={
+            <PrivateRoute>
+              <Board />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/unirse'
+          element={
+            <PrivateRoute>
+              <UnirsePartida />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/mis-partidas'
+          element={
+            <PrivateRoute>
+              <PartidasExistentes />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/perfil'
+          element={
+            <PrivateRoute>
+              <Perfil />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/cboard'
+          element={
+            <PrivateRoute>
+              <ShowBoard />
+            </PrivateRoute>
+          }
+        />
+
+        {/* RUTA 404 */}
+        <Route path="*" element={<p>404 - Página no encontrada</p>} />
       </Routes>
     </BrowserRouter>
   );
