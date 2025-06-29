@@ -1,0 +1,64 @@
+.historial-container {
+  position: relative;
+  z-index: 2;
+  max-width: 750px;
+  margin: 7rem auto;
+  background: rgba(255, 255, 255, 0.97);
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border: 2px solid #0077cc;
+  text-align: center;
+  backdrop-filter: none; /* Asegúrate de no aplicar blur innecesario */
+}
+
+.historial-container h1 {
+  margin-bottom: 2rem;
+  color: #003580;
+}
+
+.historial-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.historial-container li {
+  margin: 1rem 0;
+  padding: 1.5rem;
+  border: 2px solid #0077cc;
+  border-radius: 1rem;
+  background: #ffffff; /* Fondo sólido para que NO se difumine */
+  box-shadow: 0 4px 12px rgba(0, 71, 171, 0.08);
+  text-align: left;
+}
+
+.historial-container li.en-progreso {
+  background: #dbf3ff;
+}
+
+.historial-container li.finalizada {
+  background: #e6e6e6;
+}
+
+.historial-container h3 {
+  margin: 0 0 0.5rem;
+  color: #003580;
+}
+
+.historial-container p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.historial-container a {
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: none;
+  color: #0077cc;
+  font-weight: 600;
+}
+
+.historial-container a:hover {
+  text-decoration: underline;
+}

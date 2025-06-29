@@ -1,12 +1,15 @@
 
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Board.css";
 
 export default function Board() {
   const { id } = useParams();
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const [ganadorId, setGanadorId] = useState(null);
+
 
   const currentUser = (() => {
     try {
@@ -46,9 +49,18 @@ export default function Board() {
       });
       setTurnoUserId(resGame.data.turno_user_id);
       setJugadores(resGame.data.jugadores || []);
+      if (resGame.data.ganador_id) {
+        setGanadorId(resGame.data.ganador_id);
+      }
     } catch {
     }
   };
+
+  useEffect(() => {
+    if (ganadorId) {
+      navigate(`/result/${id}`);
+    }
+  }, [ganadorId]);
 
   const handleLanzarDado = async () => {
     setAnimandoDado(true);

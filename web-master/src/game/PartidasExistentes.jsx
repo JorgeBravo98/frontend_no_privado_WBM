@@ -26,7 +26,11 @@ export default function PartidasExistentes() {
             },
           }
         );
-        setPartidas(response.data.games); 
+
+        const noterminadas = response.data.games.filter(
+          (g) => !(g.estado === false && g.en_progreso === false) 
+        );
+        setPartidas(noterminadas); 
       } catch {
         setMensaje("Error al cargar las partidas.");
       }

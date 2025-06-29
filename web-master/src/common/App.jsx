@@ -28,7 +28,8 @@ function App() {
           <>
             <Link to='/crear'>🆕 Crear partida</Link>
             <Link to='/unirse'>🔗 Unirse a partida</Link>
-            <Link to='/mis-partidas'>📋 Ver mis partidas</Link>
+            <Link to='/mis-partidas'>📋 Mis partidas activas</Link>
+            <Link to='/historial'>📋 Historial partidas pasadas</Link>
           </>
         ) : (
           <Link to='/login' className="jugar-btn">¡Ir a Jugar!</Link>

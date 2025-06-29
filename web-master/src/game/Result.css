@@ -1,0 +1,71 @@
+.result-container {
+  position: relative;
+  z-index: 2;
+  max-width: 750px;
+  margin: 7rem auto;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border: 2px solid #0077cc;
+  text-align: center;
+}
+
+.result-container h1 {
+  font-size: 2rem;
+  color: #003580;
+}
+
+.result-container h2.ganador {
+  margin-top: 1rem;
+  color: #0077cc;
+}
+
+.result-container h3 {
+  margin-top: 2rem;
+  color: #003580;
+}
+
+.slots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.slot {
+  width: 140px;
+  height: 90px;
+  background-color: #dbd2d2;
+  border: 2px solid #0077cc;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: #003580;
+  box-shadow: 0 4px 12px rgba(0, 71, 171, 0.08);
+}
+
+.slot.winner {
+  background-color: #0077cc;
+  color: #fff;
+  border-color: #003580;
+}
+
+.slot-name {
+  font-size: 1.1rem;
+}
+
+.slot-pos {
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.game-id {
+  margin-top: 2rem;
+  color: #555;
+  font-size: 0.95rem;
+}

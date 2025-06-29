@@ -12,6 +12,8 @@ import PartidasExistentes from "../game/PartidasExistentes";
 import Perfil from "../profile/perfil";
 import Navbar from "./nav";
 import ShowBoard from "./showBoard";
+import Result from "../game/Result";
+import Historial from "./Historial";
 
 function Routing() {
   return (
@@ -30,6 +32,8 @@ function Routing() {
         <Route path='/mis-partidas' element={<PartidasExistentes />} />
         <Route path='/perfil' element={<Perfil />} />
         <Route path='/cboard' element={<ShowBoard />} />
+        <Route path="/result/:id" element={<Result />} />
+        <Route path="/historial" element={<Historial />} />
       </Routes>
     </BrowserRouter>
   );
