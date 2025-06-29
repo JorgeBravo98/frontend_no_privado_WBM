@@ -279,3 +279,9 @@ z-index: 1;
   color: #b02a2a;
   border: 1.5px solid #b02a2a;
 }
+
+.not-found-container {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 300px;
+}
