@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -22,6 +21,7 @@ export default function Board() {
   const [dado, setDado] = useState(null);
   const [jugadores, setJugadores] = useState([]);
   const [animandoDado, setAnimandoDado] = useState(false);
+  const [inventario, setInventario] = useState([]); // NUEVO estado para las cartas
 
   const fetchBoard = async () => {
     try {
@@ -50,6 +50,20 @@ export default function Board() {
     }
   };
 
+  const fetchInventario = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/games/${id}/players/${currentUser.id}/powers`,
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      );
+      setInventario(res.data);
+    } catch (error) {
+      console.error("Error al obtener el inventario:", error);
+    }
+  };
+
   const handleLanzarDado = async () => {
     setAnimandoDado(true);
     try {
@@ -59,6 +73,7 @@ export default function Board() {
       setDado(res.data.dado);
       fetchBoard();
       fetchGame();
+      fetchInventario();
     } catch {
       const mensajeDiv = document.getElementById("mensaje");
       if (mensajeDiv) {
@@ -71,10 +86,14 @@ export default function Board() {
   useEffect(() => {
     fetchBoard();
     fetchGame();
+    fetchInventario();
+
     const interval = setInterval(() => {
       fetchBoard();
       fetchGame();
+      fetchInventario();
     }, 4000);
+
     return () => clearInterval(interval);
   }, [id]);
 
@@ -134,10 +153,11 @@ export default function Board() {
               <div className="square-number">{box.number}</div>
               <div className="players-in-square">
                 {box.players.map((player, idx) => {
-                  const isExternal = player.avatar?.startsWith("http");
-                  const avatarName = isExternal
-                    ? "url"
-                    : player.avatar?.split("/").pop()?.replace(".png", "") || "avatar1";
+                const avatarName = player.avatar && !player.avatar.startsWith("http")
+                  ? player.avatar.replace(".png", "")
+                  : "avatar1";
+
+
 
                   return (
                     <div
@@ -152,16 +172,24 @@ export default function Board() {
           ))}
         </div>
 
-        {/* Panel derecho: inventario */}
+        {/* Panel derecho: inventario dinámico */}
         <div className="right-panel">
-          <h3>Tu Inventario (Ejemplo estático)</h3>
-          <ul className="inventory-list">
-            <li>📍 Mapa del Sur de Chile</li>
-            <li>🥟 Empanadas (x3)</li>
-            <li>🎫 Boleto de Metro</li>
-            <li>⛰️ Acceso a Torres del Paine</li>
-            <li>❓ Carta misteriosa</li>
-          </ul>
+          <h3>🎒 Tu Inventario</h3>
+          {inventario.length === 0 ? (
+            <p>No tienes cartas aún.</p>
+          ) : (
+            <ul className="inventory-list">
+              {inventario.map((carta) => (
+              <li
+                key={carta.id}
+                className={`carta-item carta-${carta.name.toLowerCase().replace(/\s+/g, '-')}`}
+              >
+                <span className="carta-nombre">{carta.name}</span>
+              </li>
+
+              ))}
+            </ul>
+          )}
         </div>
 
       </div>
