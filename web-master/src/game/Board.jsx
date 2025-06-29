@@ -25,6 +25,7 @@ export default function Board() {
   const [animandoDado, setAnimandoDado] = useState(false);
   const [inventario, setInventario] = useState([]);
   const [mensaje, setMensaje] = useState(""); //NUEVO
+  const [casillaEspecial, setCasillaEspecial] = useState(null);
 
 
   const fetchBoard = async () => {
@@ -92,10 +93,12 @@ export default function Board() {
         }
       );
       setDado(res.data.dado);
-      setMensaje(res.data.message);
+      setMensaje(res.data.messagex);
       fetchBoard();
       fetchGame();
       fetchInventario();
+      setCasillaEspecial(res.data.casilla_especial);
+      setTimeout(() => setCasillaEspecial(null), 12000);
     } catch {
       const mensajeDiv = document.getElementById("mensaje");
       if (mensajeDiv) {
@@ -173,8 +176,18 @@ export default function Board() {
           )}
 
           {dado && <p>🎯 Sacaste un {dado}</p>}
+          
           {mensaje && <p className="mensaje-evento" id="mensaje">{mensaje}</p>}
 
+          <p>
+            {casillaEspecial === "avance" && (
+              <p className="casilla-especial-msg">🚀 ¡Funicular! Avanzaste 5</p>
+            )}
+
+            {casillaEspecial === "retroceso" && (
+              <p className="casilla-especial-msg">⏪ ¡Taco! Retrocediste 5</p>
+            )}
+          </p>
         </div>
 
         {/* Tablero central */}
@@ -191,7 +204,8 @@ export default function Board() {
               <div className="square-number">{box.number}</div>
               <div className="players-in-square">
                 {box.players.map((player, idx) => {
-                const allowedAvatars = ["avatar1", "avatar2", "avatar3", "avatar4"];
+                  const allowedAvatars = ["avatar1", "avatar2", "avatar3", "avatar4"];
+
                 let avatarName;
                 if (
                   player.avatar &&
@@ -207,7 +221,6 @@ export default function Board() {
                 } else {
                   avatarName = "avatar1";
                 }
-
 
                   return (
                     <div
