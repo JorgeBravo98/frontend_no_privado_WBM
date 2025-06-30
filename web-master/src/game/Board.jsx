@@ -193,7 +193,7 @@ const handleUsarCarta = async () => {
     return player ? player.user.name : "jugador desconocido";
   };
 
-  const cartasConObjetivo = ["Empanada", "Choripán"];
+  const cartasConObjetivo = ["Empanada", "Choripan"];
 
   return (
     <div className="board">
