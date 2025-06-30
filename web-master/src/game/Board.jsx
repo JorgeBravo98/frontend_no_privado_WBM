@@ -85,7 +85,8 @@ export default function Board() {
   };
 
 
-  
+  const [eventoOcurrido, setEventoOcurrido] = useState(false);
+
   const handleLanzarDado = async () => {
     setAnimandoDado(true);
     try {
@@ -98,7 +99,15 @@ export default function Board() {
       );
       setDado(res.data.dado);
       setMensaje(res.data.messagex);
-      setMensajeMarepoto(res.data.mensajeMarepoto || ""); 
+      setMensajeMarepoto(res.data.mensajeMarepoto || "");
+
+      // ✅ Nuevo: revisa si ocurrió un evento aleatorio
+      const ocurrioEvento =
+        res.data.messagex?.startsWith("¡Evento") ||
+        res.data.mensajeMarepoto;
+
+      setEventoOcurrido(ocurrioEvento);
+
       fetchBoard();
       fetchGame();
       fetchInventario();
@@ -190,8 +199,8 @@ export default function Board() {
           )}
 
           {dado && <p>🎯 Sacaste un {dado}</p>}
-          
-          {mensaje && !mensaje.startsWith("Avanzaste") && (
+                    
+          {mensaje && (!mensaje.startsWith("Avanzaste") || !eventoOcurrido) && (
             <p className="mensaje-evento" id="mensaje">{mensaje}</p>
           )}
 

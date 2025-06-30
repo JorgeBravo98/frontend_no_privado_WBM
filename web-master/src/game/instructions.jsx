@@ -54,22 +54,20 @@ export default function Instructions() {
         </p>
         <ol>
           <li>
-            <strong>Portonazo:</strong> Si un jugador acumula 4 o más objetos en su inventario, se
-            convierte en un blanco atractivo para los delincuentes. Cada vez que dicho
-            jugador obtenga un 6 en la tirada, sufrirá un portonazo y perderá la totalidad
-            de sus objetos. Esto obliga a los jugadores a gestionar sus recursos con
-            cautela.
+            <strong>Cuarentena Express:</strong> Un brote de virus obliga al jugador actual a entrar en cuarentena 
+            por un turno. Durante esa ronda, el jugador no se mueve, pero se recupera automáticamente en el siguiente turno.
+            Este evento tiene una probabilidad de ocurrencia del 5% en cada lanzamiento
           </li>
           <li>
             <strong>18 de septiembre:</strong> Después de una intensa celebración de fiestas patrias, el
             jugador que reciba este evento sufre una desorientación tal que vuelve a la
-            casilla número 1.
+            casilla número 1. Este evento tiene una probabilidad de ocurrencia del 3%. en cada lanzamiento.
           </li>
           <li>
             <strong>Marepoto:</strong> Este es el evento más improbable de todo el juego. Un gran sismo
             sacude el tablero y provoca un maremoto que hace que todos los jugadores
-            sean reubicados aleatoriamente en una nueva casilla, con excepción de la
-            ganadora.
+            sean reubicados aleatoriamente en una nueva casilla. Este evento tiene una probabilidad de ocurrencia 
+            del 1% pero solo cuando el jugador cae en una casilla "normal".
           </li>
         </ol>
       </div>

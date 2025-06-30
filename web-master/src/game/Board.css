@@ -170,7 +170,7 @@
   align-items: center;
   justify-content: center;
   gap: 10px; 
-  width: 170px;
+  width: 179px;
   height: 50px;
   background: linear-gradient(90deg, #b43838 0%, #5985f5 100%);
   border: none;
@@ -290,13 +290,18 @@
 .mensaje-evento {
   margin-top: 10px;
   font-weight: bold;
-  color: #b22222; 
-  background-color: #ffffff; 
-  border: 1px solid #ccc;
-  padding: 8px 12px;
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  color: #d32f2f;
+  background: linear-gradient(135deg, #ffffff, #f5f5f5);
+  border-left: 5px solid #0033a0;
+  border-right: 5px solid #ff0000;
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  text-align: left;
 }
+
 
 .mensaje-marepoto {
   margin-top: 10px;
