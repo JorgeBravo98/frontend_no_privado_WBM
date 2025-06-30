@@ -69,7 +69,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <a href="/" className="navbar-title"> 🏠 100 Pasos por Chile</a>
+        <a href="/" className="navbar-title"> 🏠 50 Pasos por Chile</a>
       </div>
       <div className="navbar-right">
         <>

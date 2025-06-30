@@ -92,7 +92,7 @@ export default function Perfil() {
       <div className="registro-card">
         <div className="registro-izquierda">
           <div>
-            <h1 className="registro-titulo">100 Pasos por Chile </h1>
+            <h1 className="registro-titulo">50 Pasos por Chile </h1>
             <p className="registro-descripcion">
               ¡Actualiza tus datos para tener la mejor experiencia!
             </p>

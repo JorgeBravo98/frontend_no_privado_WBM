@@ -82,7 +82,7 @@ export default function Login() {
         <div className="registro-izquierda">
           <div>
             <h2 className="registro-subtitulo">Bienvenido a</h2>
-            <h1 className="registro-titulo">100 Pasos por Chile</h1>
+            <h1 className="registro-titulo">50 Pasos por Chile</h1>
             <p className="registro-descripcion">
               ¡Inicia sesión para continuar explorando juegos!
             </p>

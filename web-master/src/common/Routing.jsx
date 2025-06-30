@@ -114,8 +114,6 @@ function Routing() {
           }
         />
 
-
-
         {/* RUTA 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
