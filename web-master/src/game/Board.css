@@ -297,3 +297,14 @@
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
+
+.mensaje-marepoto {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #0c5460; 
+  background-color: #d1ecf1; 
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #bee5eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}

@@ -26,6 +26,8 @@ export default function Board() {
   const [inventario, setInventario] = useState([]);
   const [mensaje, setMensaje] = useState(""); //NUEVO
   const [casillaEspecial, setCasillaEspecial] = useState(null);
+  const [mensajeMarepoto, setMensajeMarepoto] = useState("");
+
 
 
   const fetchBoard = async () => {
@@ -94,6 +96,7 @@ export default function Board() {
       );
       setDado(res.data.dado);
       setMensaje(res.data.messagex);
+      setMensajeMarepoto(res.data.mensajeMarepoto || ""); 
       fetchBoard();
       fetchGame();
       fetchInventario();
@@ -108,6 +111,15 @@ export default function Board() {
     }
     setTimeout(() => setAnimandoDado(false), 1500);
   };
+
+  useEffect(() => {
+    if (mensajeMarepoto) {
+      const timeout = setTimeout(() => {
+        setMensajeMarepoto("");
+      }, 8000); // desaparece después de 8s
+      return () => clearTimeout(timeout);
+    }
+  }, [mensajeMarepoto]);
 
   useEffect(() => {
     fetchBoard();
@@ -178,6 +190,12 @@ export default function Board() {
           {dado && <p>🎯 Sacaste un {dado}</p>}
           
           {mensaje && <p className="mensaje-evento" id="mensaje">{mensaje}</p>}
+
+          {mensajeMarepoto && (
+            <p className="mensaje-marepoto" id="mensaje-marepoto">
+              {mensajeMarepoto}
+            </p>
+          )}
 
           <p>
             {casillaEspecial === "avance" && (
