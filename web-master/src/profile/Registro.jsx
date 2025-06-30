@@ -49,7 +49,8 @@ export default function Registro() {
     if (!valid) return;
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/register`, {
+      // 1. Crear usuario
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/register`, {
         name,
         mail: email,
         password,
@@ -58,23 +59,29 @@ export default function Registro() {
         type: null
       });
 
-      const { token } = response.data;
+      // 2. Iniciar sesión automáticamente
+      const loginResponse = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, {
+        mail: email,
+        password
+      });
+
+      const { token } = loginResponse.data;
       localStorage.setItem("token", token);
       window.dispatchEvent(new Event("authChange"));
       setTipoMensaje("exito");
       setMensaje("¡Registro exitoso! Bienvenido a 50 Pasos por Chile.");
-      setTimeout(() => navigate("/"), 1500); 
+      setTimeout(() => navigate("/"), 1500);
 
     } catch (error) {
       setTipoMensaje("error");
-      if (error.response && error.response.data && error.response.data.error) {
-        setMensaje("Error: " + error.response.data.error); 
+      if (error.response?.data?.error) {
+        setMensaje("Error: " + error.response.data.error);
       } else {
         setMensaje("Error de conexión con el servidor");
       }
     }
-  };
-
+  }
+  
   return (
     <div className="registro-container">
       <div className="registro-card">
