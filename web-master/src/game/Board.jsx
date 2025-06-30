@@ -84,6 +84,8 @@ export default function Board() {
     }
   };
 
+
+  
   const handleLanzarDado = async () => {
     setAnimandoDado(true);
     try {
@@ -116,7 +118,7 @@ export default function Board() {
     if (mensajeMarepoto) {
       const timeout = setTimeout(() => {
         setMensajeMarepoto("");
-      }, 8000); // desaparece después de 8s
+      }, 10000); 
       return () => clearTimeout(timeout);
     }
   }, [mensajeMarepoto]);
@@ -189,7 +191,9 @@ export default function Board() {
 
           {dado && <p>🎯 Sacaste un {dado}</p>}
           
-          {mensaje && <p className="mensaje-evento" id="mensaje">{mensaje}</p>}
+          {mensaje && !mensaje.startsWith("Avanzaste") && (
+            <p className="mensaje-evento" id="mensaje">{mensaje}</p>
+          )}
 
           {mensajeMarepoto && (
             <p className="mensaje-marepoto" id="mensaje-marepoto">
