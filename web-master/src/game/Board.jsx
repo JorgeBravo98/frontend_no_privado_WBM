@@ -161,7 +161,7 @@ export default function Board() {
 
   return (
     <div className="board">
-      <h1>100 Pasos por Chile</h1>
+      <h1>50 Pasos por Chile</h1>
       <p className="subtitle">Recorre el país descubriendo sus maravillas</p>
 
       <div className="board-wrapper">

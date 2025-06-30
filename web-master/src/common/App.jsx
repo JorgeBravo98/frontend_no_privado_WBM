@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="landing-container">
       <header>
-        <h1>100 Pasos por Chile</h1>
+        <h1>50 Pasos por Chile</h1>
         <p className="subtitle">
           Explora Chile casilla a casilla en un viaje de cultura, azar y chispeza.
         </p>

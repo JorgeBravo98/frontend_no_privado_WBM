@@ -6,7 +6,7 @@ export default function Instructions() {
       <div className="instructions-title-box">
         <h1 className="instructions-title">Instrucciones del Juego</h1>
         <p className="instructions-subtitle">
-          Aprende a jugar "100 Pasos por Chile" en simples pasos.
+          Aprende a jugar "50 Pasos por Chile" en simples pasos.
         </p>
       </div>
 

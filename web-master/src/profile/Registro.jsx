@@ -62,7 +62,7 @@ export default function Registro() {
       localStorage.setItem("token", token);
       window.dispatchEvent(new Event("authChange"));
       setTipoMensaje("exito");
-      setMensaje("¡Registro exitoso! Bienvenido a 100 Pasos por Chile.");
+      setMensaje("¡Registro exitoso! Bienvenido a 50 Pasos por Chile.");
       setTimeout(() => navigate("/"), 1500); 
 
     } catch (error) {
@@ -81,7 +81,7 @@ export default function Registro() {
         <div className="registro-izquierda">
           <div>
             <h2 className="registro-subtitulo">Bienvenido a</h2>
-            <h1 className="registro-titulo">100 Pasos por Chile </h1>
+            <h1 className="registro-titulo">50 Pasos por Chile </h1>
             <p className="registro-descripcion">
               ¡Crea una cuenta para unirte a nuestra comunidad chilena!
             </p>
