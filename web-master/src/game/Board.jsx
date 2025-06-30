@@ -143,10 +143,6 @@ const handleUsarCarta = async () => {
       }
     );
 
-    if (res.data?.message) {
-      alert(res.data.message);
-    }
-
     await fetchInventario();
     await fetchGame();
     await fetchBoard();
@@ -155,8 +151,7 @@ const handleUsarCarta = async () => {
     setCartaSeleccionada(null);
     setJugadorObjetivo(null);
   } catch (error) {
-    console.error("Error al usar carta:", error);
-    alert("❌ No se pudo usar la carta.");
+
   }
 
   setUsandoCarta(false);
