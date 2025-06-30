@@ -27,7 +27,10 @@ export default function Board() {
   const [mensaje, setMensaje] = useState(""); //NUEVO
   const [casillaEspecial, setCasillaEspecial] = useState(null);
   const [mensajeMarepoto, setMensajeMarepoto] = useState("");
-
+  const [mostrarModal, setMostrarModal] = useState(false);
+  const [cartaSeleccionada, setCartaSeleccionada] = useState(null);
+  const [jugadorObjetivo, setJugadorObjetivo] = useState(null);
+  const [usandoCarta, setUsandoCarta] = useState(false);
 
 
   const fetchBoard = async () => {
@@ -123,6 +126,42 @@ export default function Board() {
     setTimeout(() => setAnimandoDado(false), 1500);
   };
 
+const handleUsarCarta = async () => {
+  if (!cartaSeleccionada) return;
+
+  setUsandoCarta(true);
+
+  try {
+    const res = await axios.post(
+      `${import.meta.env.VITE_BACKEND_URL}/games/${id}/use-card`,
+      {
+        powerId: cartaSeleccionada.id,
+        targetUserId: jugadorObjetivo || null
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    );
+
+    if (res.data?.message) {
+      alert(res.data.message);
+    }
+
+    await fetchInventario();
+    await fetchGame();
+    await fetchBoard();
+
+    setMostrarModal(false);
+    setCartaSeleccionada(null);
+    setJugadorObjetivo(null);
+  } catch (error) {
+    console.error("Error al usar carta:", error);
+    alert("❌ No se pudo usar la carta.");
+  }
+
+  setUsandoCarta(false);
+};
+
   useEffect(() => {
     if (mensajeMarepoto) {
       const timeout = setTimeout(() => {
@@ -159,13 +198,78 @@ export default function Board() {
     return player ? player.user.name : "jugador desconocido";
   };
 
+  const cartasConObjetivo = ["Empanada", "Choripán"];
+
   return (
     <div className="board">
       <h1>50 Pasos por Chile</h1>
       <p className="subtitle">Recorre el país descubriendo sus maravillas</p>
+      {mostrarModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>Selecciona una carta</h3>
+            <ul className="inventory-list">
+              {inventario.map((carta) => (
+                <li
+                  key={carta.id}
+                  className={`carta-item carta-${carta.name
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")}`}
+                >
+                  <button
+                    onClick={() => setCartaSeleccionada(carta)}
+                    className={
+                      cartaSeleccionada?.id === carta.id ? "selected" : ""
+                    }
+                  >
+                    {carta.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+
+            {cartaSeleccionada &&
+              cartasConObjetivo.includes(cartaSeleccionada.name) && (
+                <>
+                  <h4>Elige jugador objetivo</h4>
+                  <select
+                    value={jugadorObjetivo || ""}
+                    onChange={(e) => setJugadorObjetivo(parseInt(e.target.value))}
+                  >
+                    <option value="" disabled>
+                      --Selecciona un jugador--
+                    </option>
+                    {jugadores
+                      .filter((j) => j.user.id !== currentUser.id)
+                      .map((j) => (
+                        <option key={j.user.id} value={j.user.id}>
+                          {j.user.name}
+                        </option>
+                      ))}
+                  </select>
+                </>
+              )}
+
+            <div className="modal-actions">
+              <button onClick={() => setMostrarModal(false)}>Cancelar</button>
+              <button
+                onClick={handleUsarCarta}
+                disabled={
+                  usandoCarta ||
+                  !cartaSeleccionada ||
+                  (cartasConObjetivo.includes(cartaSeleccionada.name) &&
+                    !jugadorObjetivo)
+                }
+              >
+                Usar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="board-wrapper">
-        {/* Panel izquierdo */}
+
         <div className="left-panel">
           <h3>
             👤 Jugador:{" "}
@@ -182,20 +286,28 @@ export default function Board() {
           </p>
 
           {currentUser?.id === turnoUserId ? (
-            <p className="turno-activo">¡Es tu turno!</p>
+            <>
+              <p className="turno-activo">¡Es tu turno!</p>
+              <button
+                className={`dice-button ${animandoDado ? "rolling" : ""}`}
+                onClick={handleLanzarDado}
+                aria-label="Lanzar dado"
+                disabled={animandoDado}
+              >
+                🎲 Lanzar
+              </button>
+              {inventario.length > 0 && (
+                <button
+                  className="use-card-button"
+                  onClick={() => setMostrarModal(true)}
+                  disabled={usandoCarta}
+                >
+                  🎴 Usar Carta
+                </button>
+              )}
+            </>
           ) : (
             <p>⏳ Turno de: {getPlayerNameById(turnoUserId)}</p>
-          )}
-
-          {currentUser?.id === turnoUserId && (
-            <button
-              className={`dice-button ${animandoDado ? "rolling" : ""}`}
-              onClick={handleLanzarDado}
-              aria-label="Lanzar dado"
-              disabled={animandoDado}
-            >
-              🎲 Lanzar
-            </button>
           )}
 
           {dado && <p>🎯 Sacaste un {dado}</p>}
@@ -221,7 +333,6 @@ export default function Board() {
           </p>
         </div>
 
-        {/* Tablero central */}
         <div className="board-grid">
           {tablero.map((box) => (
             <div
@@ -236,22 +347,21 @@ export default function Board() {
               <div className="players-in-square">
                 {box.players.map((player, idx) => {
                   const allowedAvatars = ["avatar1", "avatar2", "avatar3", "avatar4"];
-
-                let avatarName;
-                if (
-                  player.avatar &&
-                  !player.avatar.startsWith("http") &&
-                  player.avatar.trim() !== ""
-                ) {
-                  const cleanName = player.avatar
-                    .split("/")
-                    .pop()
-                    .replace(".png", "")
-                    .trim();
-                  avatarName = allowedAvatars.includes(cleanName) ? cleanName : "avatar1";
-                } else {
-                  avatarName = "avatar1";
-                }
+                  let avatarName;
+                  if (
+                    player.avatar &&
+                    !player.avatar.startsWith("http") &&
+                    player.avatar.trim() !== ""
+                  ) {
+                    const cleanName = player.avatar
+                      .split("/")
+                      .pop()
+                      .replace(".png", "")
+                      .trim();
+                    avatarName = allowedAvatars.includes(cleanName) ? cleanName : "avatar1";
+                  } else {
+                    avatarName = "avatar1";
+                  }
 
                   return (
                     <div
@@ -267,8 +377,6 @@ export default function Board() {
             </div>
           ))}
         </div>
-
-        {/* Panel derecho */}
         <div className="right-panel">
           <h3>🎒 Tu Inventario</h3>
           {inventario.length === 0 ? (
