@@ -55,7 +55,7 @@ export default function Instructions() {
         <ul>
           <li>
             <strong>Cuarentena Express:</strong> Un brote de virus obliga al jugador actual a entrar en cuarentena 
-            por un turno. Durante esa ronda, el jugador no se mueve, pero se recupera automáticamente en el siguiente turno.
+            por dos turnos. Durante las siguienes dos rondas, el jugador no se mueve.
             Este evento tiene una probabilidad de ocurrencia del 5% en cada lanzamiento
           </li>
           <li>

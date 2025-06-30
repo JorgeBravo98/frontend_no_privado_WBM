@@ -37,6 +37,7 @@ function Routing() {
         <Route path='/nosotros' element={<Nosotros />} />
         <Route path='/registro' element={<Registro />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/cboard' element={<ShowBoard />}/>
 
         {/* RUTAS PROTEGIDAS */}
         <Route
@@ -84,14 +85,6 @@ function Routing() {
           element={
             <PrivateRoute>
               <Perfil />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/cboard'
-          element={
-            <PrivateRoute>
-              <ShowBoard />
             </PrivateRoute>
           }
         />
