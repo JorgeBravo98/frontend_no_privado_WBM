@@ -39,7 +39,7 @@ export default function Instructions() {
         
           <li><strong>Sopaipilla:</strong> Aplícala y multiplicaras x2 lo que obtengas en tu siguiente tirada de dados.</li>
           <li><strong>Empanada:</strong> Intercambia con otro jugador que tu elijas de posición en el tablero.</li>
-          <li><strong>Choripán:</strong> Inhibe durante una ronda la posibilidad de que te lancen una empanada.</li>
+          <li><strong>Choripán:</strong> Hace retroceder 10 casillas al jugaador que tú elijas, siendo la casilla mínima la uno.</li>
         </ul>
         
       </div>
